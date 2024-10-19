@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "DisplayXml";
+}
+
+<h2>DisplayXml</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css" /> <!-- Add your CSS file if needed -->
+</head>
+<body>
+    <div class="container">
+        <h2>Uploaded XML Content</h2>
+
+        @if (!string.IsNullOrEmpty(ViewBag.XmlContent))
+        {
+            <pre>@ViewBag.XmlContent</pre>
+        }
+        else
+        {
+            <p>No XML content available.</p>
+        }
+
+        <div>
+            <a href="@Url.Action("FileUpload", "tickStar")" class="btn btn-primary">Upload Another File</a>
+        </div>
+    </div>
+
+    <style>
+        /* Basic styling for the display */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            overflow-x: auto;
+            white-space: pre-wrap; /* Allows wrapping in case of long lines */
+        }
+    </style>
+</body>
+</html>

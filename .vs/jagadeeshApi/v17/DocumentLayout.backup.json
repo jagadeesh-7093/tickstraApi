@@ -1,0 +1,148 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\cyber\\source\\repos\\jagadeeshApi\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8ED2F2AB-3F53-4A30-80EE-6D0750A3EB16}|jagadeeshApi.csproj|c:\\users\\cyber\\source\\repos\\jagadeeshapi\\controllers\\tickstarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8ED2F2AB-3F53-4A30-80EE-6D0750A3EB16}|jagadeeshApi.csproj|solutionrelative:controllers\\tickstarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8ED2F2AB-3F53-4A30-80EE-6D0750A3EB16}|jagadeeshApi.csproj|c:\\users\\cyber\\source\\repos\\jagadeeshapi\\views\\tickstar\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8ED2F2AB-3F53-4A30-80EE-6D0750A3EB16}|jagadeeshApi.csproj|solutionrelative:views\\tickstar\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8ED2F2AB-3F53-4A30-80EE-6D0750A3EB16}|jagadeeshApi.csproj|c:\\users\\cyber\\source\\repos\\jagadeeshapi\\views\\tickstar\\fileupload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8ED2F2AB-3F53-4A30-80EE-6D0750A3EB16}|jagadeeshApi.csproj|solutionrelative:views\\tickstar\\fileupload.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8ED2F2AB-3F53-4A30-80EE-6D0750A3EB16}|jagadeeshApi.csproj|c:\\users\\cyber\\source\\repos\\jagadeeshapi\\views\\tickstar\\displayxml.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8ED2F2AB-3F53-4A30-80EE-6D0750A3EB16}|jagadeeshApi.csproj|solutionrelative:views\\tickstar\\displayxml.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 18,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DisplayXml.cshtml",
+              "DocumentMoniker": "C:\\Users\\cyber\\source\\repos\\jagadeeshApi\\Views\\tickStar\\DisplayXml.cshtml",
+              "RelativeDocumentMoniker": "Views\\tickStar\\DisplayXml.cshtml",
+              "ToolTip": "C:\\Users\\cyber\\source\\repos\\jagadeeshApi\\Views\\tickStar\\DisplayXml.cshtml",
+              "RelativeToolTip": "Views\\tickStar\\DisplayXml.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwBUAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-19T11:44:37.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FileUpload.cshtml",
+              "DocumentMoniker": "C:\\Users\\cyber\\source\\repos\\jagadeeshApi\\Views\\tickStar\\FileUpload.cshtml",
+              "RelativeDocumentMoniker": "Views\\tickStar\\FileUpload.cshtml",
+              "ToolTip": "C:\\Users\\cyber\\source\\repos\\jagadeeshApi\\Views\\tickStar\\FileUpload.cshtml",
+              "RelativeToolTip": "Views\\tickStar\\FileUpload.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAwwEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-19T11:33:54.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\cyber\\source\\repos\\jagadeeshApi\\Views\\tickStar\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\tickStar\\Index.cshtml",
+              "ToolTip": "C:\\Users\\cyber\\source\\repos\\jagadeeshApi\\Views\\tickStar\\Index.cshtml",
+              "RelativeToolTip": "Views\\tickStar\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-19T09:07:58.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "tickStarController.cs",
+              "DocumentMoniker": "C:\\Users\\cyber\\source\\repos\\jagadeeshApi\\Controllers\\tickStarController.cs",
+              "RelativeDocumentMoniker": "Controllers\\tickStarController.cs",
+              "ToolTip": "C:\\Users\\cyber\\source\\repos\\jagadeeshApi\\Controllers\\tickStarController.cs",
+              "RelativeToolTip": "Controllers\\tickStarController.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAkwHYAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T09:07:01.748Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

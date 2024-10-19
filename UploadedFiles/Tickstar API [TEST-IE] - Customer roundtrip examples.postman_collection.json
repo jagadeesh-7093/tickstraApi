@@ -1,0 +1,1830 @@
+{
+	"info": {
+		"_postman_id": "0782d627-9427-4bc6-8e69-3474581a2fb7",
+		"name": "Tickstar API [TEST-IE] - Customer roundtrip examples",
+		"description": "Provides means for sending and receiving transactions with the Galaxy Gateway platform.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16769882"
+	},
+	"item": [
+		{
+			"name": "transactions",
+			"item": [
+				{
+					"name": "{transaction Id}",
+					"item": [
+						{
+							"name": "artefacts",
+							"item": [
+								{
+									"name": "List available artefacts for a transaction",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId/artefacts",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId",
+												"artefacts"
+											],
+											"query": [
+												{
+													"key": "type",
+													"value": "DELIVERY",
+													"disabled": true
+												},
+												{
+													"key": "purged",
+													"value": "false",
+													"disabled": true
+												}
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "6fb99d9e-f138-4926-9793-916375deb5b2",
+													"description": "(Required) "
+												}
+											]
+										},
+										"description": "Gets the currently available artefacts for a transaction that can be downloaded."
+									},
+									"response": [
+										{
+											"name": "The available artefacts for the given transaction",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/transactions/:transactionId/artefacts?type=DELIVERY&purged=false",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"transactions",
+														":transactionId",
+														"artefacts"
+													],
+													"query": [
+														{
+															"key": "type",
+															"value": "DELIVERY"
+														},
+														{
+															"key": "purged",
+															"value": "false"
+														}
+													],
+													"variable": [
+														{
+															"key": "transactionId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"pagination\": {\n    \"links\": {\n      \"first\": \"https://api.galaxygw.com/transaction/1.0/transactions?paginationToken=63kbz7p1lkp8nssmljq8bxzpgoixpxf9\",\n      \"previous\": \"https://api.galaxygw.com/transaction/1.0/transactions?paginationToken=jo38krcol0tqyo5ds8ij7jyscb6otdtp\",\n      \"next\": \"https://api.galaxygw.com/transaction/1.0/transactions?paginationToken=k9qk1po0w3j3d8q66tt0jwinv5b910h2\"\n    }\n  },\n  \"items\": [\n    {\n      \"artefactId\": \"accb62d1-ee6a-eb24-8f33-56cbdd1d52ff\",\n      \"type\": \"DELIVERY\",\n      \"size\": 65392,\n      \"contentType\": \"application/xml\",\n      \"purged\": false\n    },\n    {\n      \"artefactId\": \"ed570294-8d63-2256-b79e-b609eb95fba9\",\n      \"type\": \"DELIVERY\",\n      \"size\": 65392,\n      \"contentType\": \"application/xml\",\n      \"purged\": false\n    }\n  ]\n}"
+										},
+										{
+											"name": "The transaction with given id is either not known to us or  you do not have access to it.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/transactions/:transactionId/artefacts?type=DELIVERY&purged=true",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"transactions",
+														":transactionId",
+														"artefacts"
+													],
+													"query": [
+														{
+															"key": "type",
+															"value": "DELIVERY"
+														},
+														{
+															"key": "purged",
+															"value": "true"
+														}
+													],
+													"variable": [
+														{
+															"key": "transactionId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "Download an artefact",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId/artefacts/:artefactId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId",
+												"artefacts",
+												":artefactId"
+											],
+											"query": [
+												{
+													"key": "transformationId",
+													"value": "<string>",
+													"description": "THIS WILL NOT BE IMPLEMENTED FOR PHASE 1",
+													"disabled": true
+												}
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "6fb99d9e-f138-4926-9793-916375deb5b2",
+													"description": "(Required) "
+												},
+												{
+													"key": "artefactId",
+													"value": "6fb99d9e-f138-4926-9793-916375deb5b2",
+													"description": "(Required)"
+												}
+											]
+										},
+										"description": "Downloads an artefact in its native format, unless a transformation id is provided. Providing an optional  transformation id will transform the native format to the designated transformed format.  The response content type is dependent on the type of artefact you are requesting and transformation if applicable."
+									},
+									"response": [
+										{
+											"name": "Successful request, data available in the request body.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/transactions/:transactionId/artefacts/:artefactId?transformationId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"transactions",
+														":transactionId",
+														"artefacts",
+														":artefactId"
+													],
+													"query": [
+														{
+															"key": "transformationId",
+															"value": "<string>"
+														}
+													],
+													"variable": [
+														{
+															"key": "transactionId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														},
+														{
+															"key": "artefactId",
+															"value": "urn:uuid:257b9fe9-5cc7-67c2-d4bd-4c2",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "Invalid input.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/transactions/:transactionId/artefacts/:artefactId?transformationId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"transactions",
+														":transactionId",
+														"artefacts",
+														":artefactId"
+													],
+													"query": [
+														{
+															"key": "transformationId",
+															"value": "<string>"
+														}
+													],
+													"variable": [
+														{
+															"key": "transactionId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														},
+														{
+															"key": "artefactId",
+															"value": "urn:uuid:257b9fe9-5cc7-67c2-d4bd-4c2",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Bad Request",
+											"code": 400,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "The transaction or artefact with given id is either not known to us or  you do not have access to it.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/transactions/:transactionId/artefacts/:artefactId?transformationId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"transactions",
+														":transactionId",
+														"artefacts",
+														":artefactId"
+													],
+													"query": [
+														{
+															"key": "transformationId",
+															"value": "<string>"
+														}
+													],
+													"variable": [
+														{
+															"key": "transactionId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														},
+														{
+															"key": "artefactId",
+															"value": "urn:uuid:257b9fe9-5cc7-67c2-d4bd-4c2",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Not Found",
+											"code": 404,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "The artefact has been permanently purged.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/transactions/:transactionId/artefacts/:artefactId?transformationId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"transactions",
+														":transactionId",
+														"artefacts",
+														":artefactId"
+													],
+													"query": [
+														{
+															"key": "transformationId",
+															"value": "<string>"
+														}
+													],
+													"variable": [
+														{
+															"key": "transactionId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														},
+														{
+															"key": "artefactId",
+															"value": "urn:uuid:257b9fe9-5cc7-67c2-d4bd-4c2",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Gone",
+											"code": 410,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										},
+										{
+											"name": "The Accept headers of your request does not match the content type of the downloadable contents.",
+											"originalRequest": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/transactions/:transactionId/artefacts/:artefactId?transformationId=<string>",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"transactions",
+														":transactionId",
+														"artefacts",
+														":artefactId"
+													],
+													"query": [
+														{
+															"key": "transformationId",
+															"value": "<string>"
+														}
+													],
+													"variable": [
+														{
+															"key": "transactionId",
+															"value": "<uuid>",
+															"description": "(Required) "
+														},
+														{
+															"key": "artefactId",
+															"value": "urn:uuid:257b9fe9-5cc7-67c2-d4bd-4c2",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "Unsupported Media Type",
+											"code": 415,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "List a specific transaction",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/transactions/:transactionId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "3cfe7f9b-3da7-4e04-b591-9c6395f747f0",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Get the transaction for given id"
+							},
+							"response": [
+								{
+									"name": "The transaction for the given id",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId"
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "urn:uuid:59e97981-66ec-b4a2-8348-bb9",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"transactionId\": \"<uuid>\",\n  \"direction\": \"<string>\",\n  \"metadata\": {\n    \"corner1Identifier\": \"iso6523-actorid-upis::0007:5567212047\",\n    \"corner4Identifier\": \"iso6523-actorid-upis::0007:5567212047\",\n    \"documentIdentifier\": \"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1\",\n    \"processIdentifier\": \"urn:fdc:peppol.eu:2017:poacc:billing:01:1.0\",\n    \"messageIdentifier\": \"voluptate eli\"\n  },\n  \"state\": \"<string>\",\n  \"created\": \"1984-03-24T01:08:48.719Z\",\n  \"networkType\": \"PEPPOL\",\n  \"networkProfile\": \"AS4\",\n  \"events\": [\n    {\n      \"level\": \"ERROR\",\n      \"description\": \"mol\",\n      \"time\": \"1953-01-16T22:33:33.832Z\",\n      \"access\": \"PUBLIC\",\n      \"details\": {\n        \"code\": -1300,\n        \"description\": \"Transaction could not complete because service X was reporting Y.\",\n        \"metric\": 233\n      }\n    },\n    {\n      \"level\": \"ERROR\",\n      \"description\": \"voluptate laborum dolor commodo\",\n      \"time\": \"1978-01-27T14:35:58.485Z\",\n      \"access\": \"PUBLIC\",\n      \"details\": {\n        \"code\": -1300,\n        \"description\": \"Transaction could not complete because service X was reporting Y.\",\n        \"metric\": 233\n      }\n    }\n  ],\n  \"artefacts\": [\n    {\n      \"artefactId\": \"urn:uuid:370a90ca-7200-eccd-9f25-0c19946600e2\",\n      \"type\": \"DELIVERY\",\n      \"size\": 65392,\n      \"contentType\": \"application/xml\",\n      \"purged\": false\n    },\n    {\n      \"artefactId\": \"urn:uuid:e342ac21-7945-571b-bf5f-21d97498f0c8\",\n      \"type\": \"DELIVERY\",\n      \"size\": 65392,\n      \"contentType\": \"application/xml\",\n      \"purged\": false\n    }\n  ],\n  \"outcome\": \"<string>\",\n  \"acknowledged\": \"2004-07-03T15:05:29.506Z\",\n  \"purged\": \"1956-09-09T06:27:13.711Z\"\n}"
+								},
+								{
+									"name": "The transaction with given id is either not known to us or  you do not have access to it.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId"
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "urn:uuid:59e97981-66ec-b4a2-8348-bb9",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "List events of a transaction",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/transactions/:transactionId/events",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId",
+										"events"
+									],
+									"query": [
+										{
+											"key": "level",
+											"value": "ERROR",
+											"disabled": true
+										},
+										{
+											"key": "access",
+											"value": "PUBLIC",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "20",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "6fb99d9e-f138-4926-9793-916375deb5b2",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Get all the events related for a transaction with given id. The events are ordered according to time  with the latest occurred event first."
+							},
+							"response": [
+								{
+									"name": "The available events that have been recorded for a transaction or an empty list if no events exists.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId/events?level=ERROR&access=PUBLIC&limit=20",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId",
+												"events"
+											],
+											"query": [
+												{
+													"key": "level",
+													"value": "ERROR"
+												},
+												{
+													"key": "access",
+													"value": "PUBLIC"
+												},
+												{
+													"key": "limit",
+													"value": "20"
+												}
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"pagination\": {\n    \"links\": {\n      \"first\": \"https://api.galaxygw.com/transaction/1.0/transactions?paginationToken=63kbz7p1lkp8nssmljq8bxzpgoixpxf9\",\n      \"previous\": \"https://api.galaxygw.com/transaction/1.0/transactions?paginationToken=jo38krcol0tqyo5ds8ij7jyscb6otdtp\",\n      \"next\": \"https://api.galaxygw.com/transaction/1.0/transactions?paginationToken=k9qk1po0w3j3d8q66tt0jwinv5b910h2\"\n    }\n  },\n  \"items\": [\n    {\n      \"level\": \"ERROR\",\n      \"description\": \"nostrud enim exercitation fugiat\",\n      \"time\": \"1974-12-28T01:04:40.013Z\",\n      \"access\": \"PUBLIC\",\n      \"details\": {\n        \"code\": -1300,\n        \"description\": \"Transaction could not complete because service X was reporting Y.\",\n        \"metric\": 233\n      }\n    },\n    {\n      \"level\": \"ERROR\",\n      \"description\": \"ad cillum\",\n      \"time\": \"1999-02-18T21:10:12.075Z\",\n      \"access\": \"PUBLIC\",\n      \"details\": {\n        \"code\": -1300,\n        \"description\": \"Transaction could not complete because service X was reporting Y.\",\n        \"metric\": 233\n      }\n    }\n  ]\n}"
+								},
+								{
+									"name": "The transaction with given id is either not known to us or  you do not have access to it.",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId/events?level=ERROR&access=PUBLIC&limit=20",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId",
+												"events"
+											],
+											"query": [
+												{
+													"key": "level",
+													"value": "ERROR"
+												},
+												{
+													"key": "access",
+													"value": "PUBLIC"
+												},
+												{
+													"key": "limit",
+													"value": "20"
+												}
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Acknowledge a transaction as processed",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/transactions/:transactionId/acknowledge",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId",
+										"acknowledge"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "6fb99d9e-f138-4926-9793-916375deb5b2",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Ability for the client to acknowledge that they have successfully processed any information related to a  transaction. This can only be done to a transaction that is in an end state."
+							},
+							"response": [
+								{
+									"name": "The acknowledgment has been recorded.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId/acknowledge",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId",
+												"acknowledge"
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "The transaction with given id is either not known to us or  you do not have access to it.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId/acknowledge",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId",
+												"acknowledge"
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "The transaction is in a state that prohibits it from being acknowledged",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId/acknowledge",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId",
+												"acknowledge"
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Reprocess an outbound transaction",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/transactions/:transactionId/reprocess",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions",
+										":transactionId",
+										"reprocess"
+									],
+									"variable": [
+										{
+											"key": "transactionId",
+											"value": "<uuid>",
+											"description": "(Required) "
+										}
+									]
+								},
+								"description": "Ability for the client to request the transaction to be reprocessed. This ability exists only for  outbound transactions that are in an end state but not yet purged."
+							},
+							"response": [
+								{
+									"name": "The transaction is being reprocessed.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId/reprocess",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId",
+												"reprocess"
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "The transaction with given id is either not known to us or  you do not have access to it.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId/reprocess",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId",
+												"reprocess"
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "The transaction is either in a state or of a type that prohibits it from being reprocessed. This also  applies to transactions that are past of their data retention limit.",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/transactions/:transactionId/reprocess",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"transactions",
+												":transactionId",
+												"reprocess"
+											],
+											"variable": [
+												{
+													"key": "transactionId",
+													"value": "<uuid>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Conflict",
+									"code": 409,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "List transactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/transactions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "ACKNOWLEDGED",
+									"description": "Filter on given list of transaction states",
+									"disabled": true
+								},
+								{
+									"key": "state",
+									"value": "COMPLETED",
+									"description": "Filter on given list of transaction states",
+									"disabled": true
+								},
+								{
+									"key": "direction",
+									"value": "OUTBOUND",
+									"description": "Filter on specific transaction direction",
+									"disabled": true
+								},
+								{
+									"key": "outcome",
+									"value": "FAILED",
+									"description": "Filter on specific transactions outcome",
+									"disabled": true
+								},
+								{
+									"key": "networkType",
+									"value": "PEPPOL",
+									"description": "Filter on specific network type",
+									"disabled": true
+								},
+								{
+									"key": "createdBefore",
+									"value": "2023-02-02T07:19:59.438Z",
+									"description": "Filter on creation timestamp range from given timestamp",
+									"disabled": true
+								},
+								{
+									"key": "createdAfter",
+									"value": "2023-02-28T07:19:59.438Z",
+									"description": "Filter on creation timestamp range until given timestamp",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Specify the maximum items to return in the response. Default value is 10, maximum is 50.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get the list of all available transactions. Only the transactions to which you have access to."
+					},
+					"response": [
+						{
+							"name": "Filtered and paginated set of transactions, the collection is  empty if no transactions are available.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/transactions?state=<string>&state=<string>&direction=<string>&outcome=<string>&networkType=PEPPOL&fromDate=1964-01-02T07:19:59.438Z&toDate=1964-01-02T07:19:59.438Z&limit=10",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "state",
+											"value": "<string>"
+										},
+										{
+											"key": "state",
+											"value": "<string>"
+										},
+										{
+											"key": "direction",
+											"value": "<string>"
+										},
+										{
+											"key": "outcome",
+											"value": "<string>"
+										},
+										{
+											"key": "networkType",
+											"value": "PEPPOL"
+										},
+										{
+											"key": "fromDate",
+											"value": "1964-01-02T07:19:59.438Z"
+										},
+										{
+											"key": "toDate",
+											"value": "1964-01-02T07:19:59.438Z"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"pagination\": {\n    \"links\": {\n      \"first\": \"https://api.galaxygw.com/transaction/1.0/transactions?paginationToken=63kbz7p1lkp8nssmljq8bxzpgoixpxf9\",\n      \"previous\": \"https://api.galaxygw.com/transaction/1.0/transactions?paginationToken=jo38krcol0tqyo5ds8ij7jyscb6otdtp\",\n      \"next\": \"https://api.galaxygw.com/transaction/1.0/transactions?paginationToken=k9qk1po0w3j3d8q66tt0jwinv5b910h2\"\n    }\n  },\n  \"items\": [\n    {\n      \"transactionId\": \"urn:uuid:87e416ed-5911-ff74-b83d-5bc\",\n      \"direction\": \"<string>\",\n      \"metadata\": {\n        \"corner1Identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"corner4Identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"documentIdentifier\": \"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1\",\n        \"processIdentifier\": \"urn:fdc:peppol.eu:2017:poacc:billing:01:1.0\",\n        \"messageIdentifier\": \"non esse\"\n      },\n      \"state\": \"<string>\",\n      \"created\": \"1966-08-11T10:02:01.780Z\",\n      \"networkType\": \"PEPPOL\",\n      \"networkProfile\": \"AS4\",\n      \"events\": [\n        {\n          \"level\": \"ERROR\",\n          \"description\": \"exercitation officia amet\",\n          \"time\": \"1990-07-04T00:48:58.435Z\",\n          \"access\": \"PUBLIC\",\n          \"details\": {\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"level\": \"ERROR\",\n          \"description\": \"magna laboris proident\",\n          \"time\": \"2021-03-20T03:30:58.626Z\",\n          \"access\": \"PUBLIC\",\n          \"details\": {\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"artefacts\": [\n        {\n          \"artefactId\": \"urn:uuid:9b4e6be5-84a3-c642-30e9-1f1cd09aeef8\",\n          \"type\": \"DELIVERY\",\n          \"size\": 65392,\n          \"contentType\": \"application/xml\",\n          \"purged\": false\n        },\n        {\n          \"artefactId\": \"9aef9528-e86c-f5b6-8c67-a66383ffe1d1\",\n          \"type\": \"DELIVERY\",\n          \"size\": 65392,\n          \"contentType\": \"application/xml\",\n          \"purged\": false\n        }\n      ],\n      \"outcome\": \"<string>\",\n      \"acknowledged\": \"1998-11-01T17:00:57.944Z\",\n      \"purged\": \"2019-09-08T21:12:48.329Z\"\n    },\n    {\n      \"transactionId\": \"aa5529e8-7a69-2520-20f1-98a498e79911\",\n      \"direction\": \"<string>\",\n      \"metadata\": {\n        \"corner1Identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"corner4Identifier\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"documentIdentifier\": \"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1\",\n        \"processIdentifier\": \"urn:fdc:peppol.eu:2017:poacc:billing:01:1.0\",\n        \"messageIdentifier\": \"proident ex Excepteur\"\n      },\n      \"state\": \"<string>\",\n      \"created\": \"1967-05-12T11:28:41.657Z\",\n      \"networkType\": \"PEPPOL\",\n      \"networkProfile\": \"AS4\",\n      \"events\": [\n        {\n          \"level\": \"ERROR\",\n          \"description\": \"nisi deserunt adipisicing ut\",\n          \"time\": \"2015-06-15T11:13:45.067Z\",\n          \"access\": \"PUBLIC\",\n          \"details\": {\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        {\n          \"level\": \"ERROR\",\n          \"description\": \"magna eiusmod consequat\",\n          \"time\": \"2018-06-15T14:53:17.717Z\",\n          \"access\": \"PUBLIC\",\n          \"details\": {\n            \"code\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"metric\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"artefacts\": [\n        {\n          \"artefactId\": \"49dc93eb-77da-3334-dedc-e3dad96aa806\",\n          \"type\": \"DELIVERY\",\n          \"size\": 65392,\n          \"contentType\": \"application/xml\",\n          \"purged\": false\n        },\n        {\n          \"artefactId\": \"6eb5aad3-b44e-2c87-670d-69ea6a376fc7\",\n          \"type\": \"DELIVERY\",\n          \"size\": 65392,\n          \"contentType\": \"application/xml\",\n          \"purged\": false\n        }\n      ],\n      \"outcome\": \"<string>\",\n      \"acknowledged\": \"1967-04-25T04:46:56.143Z\",\n      \"purged\": \"1961-06-04T11:25:51.597Z\"\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "POST Peppol BIS Billing 3",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Idempotency-Key",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<StandardBusinessDocument xmlns=\"http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader\">\n    <StandardBusinessDocumentHeader>\n        <HeaderVersion>1.0</HeaderVersion>\n        <Sender>\n            <Identifier Authority=\"iso6523-actorid-upis\">0007:API_TEST_SENDER</Identifier>\n        </Sender>\n        <Receiver>\n            <Identifier Authority=\"iso6523-actorid-upis\">0007:API_TEST_RECEIVER</Identifier>\n        </Receiver>\n        <DocumentIdentification>\n            <Standard>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2</Standard>\n            <TypeVersion>2.1</TypeVersion>\n            <InstanceIdentifier>b07b736f-1553-48bc-9f88-24ee4a1fcf20</InstanceIdentifier>\n            <Type>Invoice</Type>\n            <CreationDateAndTime>2023-03-06T08:40:04</CreationDateAndTime>\n        </DocumentIdentification>\n        <BusinessScope> \n            <Scope>\n                <Type>DOCUMENTID</Type>\n                <InstanceIdentifier>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0::2.1</InstanceIdentifier>\n                <Identifier>busdox-docid-qns</Identifier>\n            </Scope>\n            <Scope>\n                <Type>PROCESSID</Type>\n                <InstanceIdentifier>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</InstanceIdentifier>\n                <Identifier>cenbii-procid-ubl</Identifier>\n            </Scope>\n            <Scope>\n                <Type>COUNTRY_C1</Type>\n                <InstanceIdentifier>SE</InstanceIdentifier>\n            </Scope>\n        </BusinessScope>\n    </StandardBusinessDocumentHeader>\n    <Invoice xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\"\n    xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\"\n    xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\">\n    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:peppol.eu:2017:poacc:billing:3.0</cbc:CustomizationID>\n    <cbc:ProfileID>urn:fdc:peppol.eu:2017:poacc:billing:01:1.0</cbc:ProfileID>\n    <cbc:ID>Snippet1</cbc:ID>\n    <cbc:IssueDate>2017-11-13</cbc:IssueDate>\n    <cbc:DueDate>2017-12-01</cbc:DueDate>\n    <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>\n    <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>\n    <cbc:AccountingCost>4025:123:4343</cbc:AccountingCost>\n    <cbc:BuyerReference>0150abc</cbc:BuyerReference>\n    <cac:AccountingSupplierParty>\n        <cac:Party>\n            <cbc:EndpointID schemeID=\"0088\">9482348239847239874</cbc:EndpointID>\n            <cac:PartyIdentification>\n                <cbc:ID>99887766</cbc:ID>\n            </cac:PartyIdentification>\n            <cac:PartyName>\n                <cbc:Name>SupplierTradingName Ltd.</cbc:Name>\n            </cac:PartyName>\n            <cac:PostalAddress>\n                <cbc:StreetName>Main street 1</cbc:StreetName>\n                <cbc:AdditionalStreetName>Postbox 123</cbc:AdditionalStreetName>\n                <cbc:CityName>London</cbc:CityName>\n                <cbc:PostalZone>GB 123 EW</cbc:PostalZone>\n                <cac:Country>\n                    <cbc:IdentificationCode>GB</cbc:IdentificationCode>\n                </cac:Country>\n            </cac:PostalAddress>\n            <cac:PartyTaxScheme>\n                <cbc:CompanyID>GB1232434</cbc:CompanyID>\n                <cac:TaxScheme>\n                    <cbc:ID>VAT</cbc:ID>\n                </cac:TaxScheme>\n            </cac:PartyTaxScheme>\n            <cac:PartyLegalEntity>\n                <cbc:RegistrationName>SupplierOfficialName Ltd</cbc:RegistrationName>\n                <cbc:CompanyID>GB983294</cbc:CompanyID>\n            </cac:PartyLegalEntity>\n        </cac:Party>\n    </cac:AccountingSupplierParty>\n    <cac:AccountingCustomerParty>\n        <cac:Party>\n            <cbc:EndpointID schemeID=\"0002\">FR23342</cbc:EndpointID>\n            <cac:PartyIdentification>\n                <cbc:ID schemeID=\"0002\">FR23342</cbc:ID>\n            </cac:PartyIdentification>\n            <cac:PartyName>\n                <cbc:Name>BuyerTradingName AS</cbc:Name>\n            </cac:PartyName>\n            <cac:PostalAddress>\n                <cbc:StreetName>Hovedgatan 32</cbc:StreetName>\n                <cbc:AdditionalStreetName>Po box 878</cbc:AdditionalStreetName>\n                <cbc:CityName>Stockholm</cbc:CityName>\n                <cbc:PostalZone>456 34</cbc:PostalZone>\n                <cac:Country>\n                    <cbc:IdentificationCode>SE</cbc:IdentificationCode>\n                </cac:Country>\n            </cac:PostalAddress>\n            <cac:PartyTaxScheme>\n                <cbc:CompanyID>SE4598375937</cbc:CompanyID>\n                <cac:TaxScheme>\n                    <cbc:ID>VAT</cbc:ID>\n                </cac:TaxScheme>\n            </cac:PartyTaxScheme>\n            <cac:PartyLegalEntity>\n                <cbc:RegistrationName>Buyer Official Name</cbc:RegistrationName>\n                <cbc:CompanyID schemeID=\"0183\">39937423947</cbc:CompanyID>\n            </cac:PartyLegalEntity>\n            <cac:Contact>\n                <cbc:Name>Lisa Johnson</cbc:Name>\n                <cbc:Telephone>23434234</cbc:Telephone>\n                <cbc:ElectronicMail>lj@buyer.se</cbc:ElectronicMail>\n            </cac:Contact>\n        </cac:Party>\n    </cac:AccountingCustomerParty>\n    <cac:Delivery>\n        <cbc:ActualDeliveryDate>2017-11-01</cbc:ActualDeliveryDate>\n        <cac:DeliveryLocation>\n            <cbc:ID schemeID=\"0088\">9483759475923478</cbc:ID>\n            <cac:Address>\n                <cbc:StreetName>Delivery street 2</cbc:StreetName>\n                <cbc:AdditionalStreetName>Building 56</cbc:AdditionalStreetName>\n                <cbc:CityName>Stockholm</cbc:CityName>\n                <cbc:PostalZone>21234</cbc:PostalZone>\n                <cac:Country>\n                    <cbc:IdentificationCode>SE</cbc:IdentificationCode>\n                </cac:Country>\n            </cac:Address>\n        </cac:DeliveryLocation>\n        <cac:DeliveryParty>\n            <cac:PartyName>\n                <cbc:Name>Delivery party Name</cbc:Name>\n            </cac:PartyName>\n        </cac:DeliveryParty>\n    </cac:Delivery>\n    <cac:PaymentMeans>\n        <cbc:PaymentMeansCode name=\"Credit transfer\">30</cbc:PaymentMeansCode>\n        <cbc:PaymentID>Snippet1</cbc:PaymentID>\n        <cac:PayeeFinancialAccount>\n            <cbc:ID>IBAN32423940</cbc:ID>\n            <cbc:Name>AccountName</cbc:Name>\n            <cac:FinancialInstitutionBranch>\n                <cbc:ID>BIC324098</cbc:ID>\n            </cac:FinancialInstitutionBranch>\n        </cac:PayeeFinancialAccount>\n    </cac:PaymentMeans>\n    <cac:PaymentTerms>\n        <cbc:Note>Payment within 10 days, 2% discount</cbc:Note>\n    </cac:PaymentTerms>\n        <cac:AllowanceCharge>\n            <cbc:ChargeIndicator>true</cbc:ChargeIndicator>\n            <cbc:AllowanceChargeReason>Insurance</cbc:AllowanceChargeReason>\n            <cbc:Amount currencyID=\"EUR\">25</cbc:Amount>\n            <cac:TaxCategory>\n                <cbc:ID>S</cbc:ID>\n                <cbc:Percent>25.0</cbc:Percent>\n                <cac:TaxScheme>\n                    <cbc:ID>VAT</cbc:ID>\n                </cac:TaxScheme>\n            </cac:TaxCategory>\n        </cac:AllowanceCharge>\n    <cac:TaxTotal>\n        <cbc:TaxAmount currencyID=\"EUR\">331.25</cbc:TaxAmount>\n        <cac:TaxSubtotal>\n            <cbc:TaxableAmount currencyID=\"EUR\">1325</cbc:TaxableAmount>\n            <cbc:TaxAmount currencyID=\"EUR\">331.25</cbc:TaxAmount>\n            <cac:TaxCategory>\n                <cbc:ID>S</cbc:ID>\n                <cbc:Percent>25.0</cbc:Percent>\n                <cac:TaxScheme>\n                    <cbc:ID>VAT</cbc:ID>\n                </cac:TaxScheme>\n            </cac:TaxCategory>\n        </cac:TaxSubtotal>\n    </cac:TaxTotal>\n    <cac:LegalMonetaryTotal>\n        <cbc:LineExtensionAmount currencyID=\"EUR\">1300</cbc:LineExtensionAmount>\n        <cbc:TaxExclusiveAmount currencyID=\"EUR\">1325</cbc:TaxExclusiveAmount>\n        <cbc:TaxInclusiveAmount currencyID=\"EUR\">1656.25</cbc:TaxInclusiveAmount>\n        <cbc:ChargeTotalAmount currencyID=\"EUR\">25</cbc:ChargeTotalAmount>\n        <cbc:PayableAmount currencyID=\"EUR\">1656.25</cbc:PayableAmount>\n    </cac:LegalMonetaryTotal>\n<cac:InvoiceLine>\n        <cbc:ID>1</cbc:ID>\n    <cbc:InvoicedQuantity unitCode=\"DAY\">7</cbc:InvoicedQuantity>\n    <cbc:LineExtensionAmount currencyID= \"EUR\">2800</cbc:LineExtensionAmount>\n        <cbc:AccountingCost>Konteringsstreng</cbc:AccountingCost>\n       <cac:OrderLineReference>\n            <cbc:LineID>123</cbc:LineID>\n        </cac:OrderLineReference>\n    <cac:Item>\n            <cbc:Description>Description of item</cbc:Description>\n            <cbc:Name>item name</cbc:Name>\n            <cac:StandardItemIdentification>\n                <cbc:ID schemeID=\"0088\">21382183120983</cbc:ID>\n            </cac:StandardItemIdentification>\n            <cac:OriginCountry>\n                <cbc:IdentificationCode>NO</cbc:IdentificationCode>\n            </cac:OriginCountry>\n            <cac:CommodityClassification>\n                <cbc:ItemClassificationCode listID=\"SRV\">09348023</cbc:ItemClassificationCode>\n            </cac:CommodityClassification>\n            <cac:ClassifiedTaxCategory>\n                <cbc:ID>S</cbc:ID>\n                <cbc:Percent>25.0</cbc:Percent>\n                <cac:TaxScheme>\n                    <cbc:ID>VAT</cbc:ID>\n                </cac:TaxScheme>\n            </cac:ClassifiedTaxCategory>\n        </cac:Item>\n    <cac:Price>\n        <cbc:PriceAmount currencyID=\"EUR\">400</cbc:PriceAmount>\n    </cac:Price>\n    </cac:InvoiceLine>\n<cac:InvoiceLine>\n    <cbc:ID>2</cbc:ID>\n    <cbc:InvoicedQuantity unitCode=\"DAY\">-3</cbc:InvoicedQuantity>\n    <cbc:LineExtensionAmount currencyID=\"EUR\">-1500</cbc:LineExtensionAmount>\n    <cac:OrderLineReference>\n        <cbc:LineID>123</cbc:LineID>\n    </cac:OrderLineReference>\n    <cac:Item>\n        <cbc:Description>Description 2</cbc:Description>\n        <cbc:Name>item name 2</cbc:Name>\n        <cac:StandardItemIdentification>\n            <cbc:ID schemeID=\"0088\">21382183120983</cbc:ID>\n        </cac:StandardItemIdentification>\n        <cac:OriginCountry>\n            <cbc:IdentificationCode>NO</cbc:IdentificationCode>\n        </cac:OriginCountry>\n        <cac:CommodityClassification>\n            <cbc:ItemClassificationCode listID=\"SRV\">09348023</cbc:ItemClassificationCode>\n        </cac:CommodityClassification>\n        <cac:ClassifiedTaxCategory>\n            <cbc:ID>S</cbc:ID>\n            <cbc:Percent>25.0</cbc:Percent>\n            <cac:TaxScheme>\n                <cbc:ID>VAT</cbc:ID>\n            </cac:TaxScheme>\n        </cac:ClassifiedTaxCategory>\n    </cac:Item>\n    <cac:Price>\n        <cbc:PriceAmount currencyID=\"EUR\">500</cbc:PriceAmount>\n    </cac:Price>\n</cac:InvoiceLine>\n</Invoice>\n</StandardBusinessDocument>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transactions?networkType=PEPPOL",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "networkType",
+									"value": "PEPPOL",
+									"description": "(Required) "
+								},
+								{
+									"key": "transformationId",
+									"value": "",
+									"description": "THIS WILL NOT BE IMPLEMENTED FOR PHASE 1",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Submit a transaction in its native format for further processing by the transaction service, or in case a transformation id is applied in the agreed source format of the transformation.  Upon submission a globally unique transaction id will be generated and returned back in the response. Idempotency: If you need idempotency to be guaranteed you need to set an idempotent key in the header. The key must be unique for your organisation and will auto-expire after  14 days."
+					},
+					"response": [
+						{
+							"name": "The request has been accepted and you can query the service for the status of the outcome using the generated id that was returned.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Idempotency-Key",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<TODO />",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/transactions?networkType=PEPPOL&transformationId=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "networkType",
+											"value": "PEPPOL"
+										},
+										{
+											"key": "transformationId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"urn:uuid:cc27a18b-862f-db51-33b7-02d\"\n}"
+						},
+						{
+							"name": "Invalid input.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Idempotency-Key",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<TODO />",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/transactions?networkType=PEPPOL&transformationId=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "networkType",
+											"value": "PEPPOL"
+										},
+										{
+											"key": "transformationId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "POST A-NZ PINT Invoice v1.0",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Idempotency-Key",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<StandardBusinessDocument xmlns=\"http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader\">\n    <StandardBusinessDocumentHeader>\n        <HeaderVersion>1.0</HeaderVersion>\n        <Sender>\n            <Identifier Authority=\"iso6523-actorid-upis\">0007:API_TEST_SENDER</Identifier>\n        </Sender>\n        <Receiver>\n            <Identifier Authority=\"iso6523-actorid-upis\">0007:API_TEST_RECEIVER</Identifier>\n        </Receiver>\n        <DocumentIdentification>\n            <Standard>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2</Standard>\n            <TypeVersion>2.1</TypeVersion>\n            <InstanceIdentifier>b6ca88d9-a748-4901-8ceb-76d99b9093b4</InstanceIdentifier>\n            <Type>Invoice</Type>\n            <CreationDateAndTime>2024-08-19T08:40:04</CreationDateAndTime>\n        </DocumentIdentification>\n        <BusinessScope> \n            <Scope>\n                <Type>DOCUMENTID</Type>\n                <InstanceIdentifier>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:billing-1@aunz-1::2.1</InstanceIdentifier>\n                <Identifier>peppol-doctype-wildcard</Identifier>\n            </Scope>\n            <Scope>\n                <Type>PROCESSID</Type>\n                <InstanceIdentifier>urn:peppol:bis:billing</InstanceIdentifier>\n                <Identifier>cenbii-procid-ubl</Identifier>\n            </Scope>\n            <Scope>\n                <Type>COUNTRY_C1</Type>\n                <InstanceIdentifier>AU</InstanceIdentifier>\n            </Scope>\n        </BusinessScope>\n    </StandardBusinessDocumentHeader>\n    <Invoice xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\">\n\t<cbc:CustomizationID>urn:peppol:pint:billing-1@aunz-1</cbc:CustomizationID>\n\t<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>\n\t<cbc:ID>INV_00482</cbc:ID>\n\t<cbc:IssueDate>2022-07-29</cbc:IssueDate>\n\t<cbc:DueDate>2022-08-30</cbc:DueDate>\n\t<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>\n\t<cbc:Note>Tax invoice. Prior invoice paid in full - Thank you!</cbc:Note><!-- Free text field might be used to meet legal/regulatory requirements, bring attention to conditional discount etc. -->\n\t<cbc:DocumentCurrencyCode>AUD</cbc:DocumentCurrencyCode>\n\t<cbc:TaxCurrencyCode>NZD</cbc:TaxCurrencyCode>\n\t<cbc:AccountingCost>4025:123:4343</cbc:AccountingCost>\n\t<cbc:BuyerReference>0150abc</cbc:BuyerReference><!-- Purchase Order and/or Buyer Reference MUST be provided -->\n\t<cac:InvoicePeriod>\n\t\t<!-- Period is optional at the invoice and line levels -->\n\t\t<cbc:StartDate>2022-06-01</cbc:StartDate>\n\t\t<cbc:EndDate>2022-07-31</cbc:EndDate>\n\t\t<cbc:DescriptionCode>3</cbc:DescriptionCode>\n\t</cac:InvoicePeriod>\n\t<cac:OrderReference>\n\t\t<cbc:ID>PO1245</cbc:ID>\n\t\t<cbc:SalesOrderID>SO34678</cbc:SalesOrderID>\n\t</cac:OrderReference>\n\t<cac:BillingReference>\n\t\t<cac:InvoiceDocumentReference>\n\t\t\t<cbc:ID>INV_00432</cbc:ID>\n\t\t\t<cbc:IssueDate>2022-05-30</cbc:IssueDate>\n\t\t</cac:InvoiceDocumentReference>\n\t</cac:BillingReference>\n\t<cac:BillingReference>\n\t\t<cac:InvoiceDocumentReference>\n\t\t\t<cbc:ID>INV_00437</cbc:ID>\n\t\t\t<cbc:IssueDate>2022-05-31</cbc:IssueDate>\n\t\t</cac:InvoiceDocumentReference>\n\t</cac:BillingReference>\n\t<cac:DespatchDocumentReference>\n\t\t<cbc:ID>ASN_03499</cbc:ID>\n\t</cac:DespatchDocumentReference>\n\t<cac:ReceiptDocumentReference>\n\t\t<cbc:ID>RCPT_1290</cbc:ID>\n\t</cac:ReceiptDocumentReference>\n\t<cac:OriginatorDocumentReference>\n\t\t<cbc:ID>OD-REF_125</cbc:ID>\n\t</cac:OriginatorDocumentReference>\n\t<cac:ContractDocumentReference>\n\t\t<cbc:ID>CN_099787</cbc:ID>\n\t</cac:ContractDocumentReference>\n\t<!-- Multiple attachments and external links may optionally be included -->\n\t<cac:AdditionalDocumentReference>\n\t\t<cbc:ID schemeID=\"SE\">15622229-135</cbc:ID>\n\t\t<cbc:DocumentTypeCode>130</cbc:DocumentTypeCode><!-- Invoiced object (e.g. equipment serial nbr) can be included at invoice and/or line levels -->\n\t</cac:AdditionalDocumentReference>\n\t<cac:AdditionalDocumentReference>\n\t\t<!-- Example of an attached file -->\n\t\t<cbc:ID>attID1</cbc:ID>\n\t\t<cbc:DocumentDescription>Supporting information</cbc:DocumentDescription>\n\t\t<cac:Attachment>\n\t\t\t<!-- Supporting information in csv format -->\n\t\t\t<cbc:EmbeddedDocumentBinaryObject mimeCode=\"text/csv\" filename=\"quality_assurance.csv\">UUFfc3RlcCxhc3N1cmFuY2VfZGVzYyxyZXN1bHQKUUMwMDEsZGltZW5zaW9uLHBhc3MKUUMwMDIsaGVhdCxwYXNzCg==</cbc:EmbeddedDocumentBinaryObject>\n\t\t</cac:Attachment>\n\t</cac:AdditionalDocumentReference>\n\t<cac:AdditionalDocumentReference>\n\t\t<!-- Link to web content -->\n\t\t<cbc:ID>attID2</cbc:ID>\n\t\t<cbc:DocumentDescription>Additional information via portal</cbc:DocumentDescription>\n\t\t<cac:Attachment>\n\t\t\t<cac:ExternalReference>\n\t\t\t\t<cbc:URI>https://github.com/A-NZ-PEPPOL/A-NZ-PEPPOL-BIS-3.0</cbc:URI>\n\t\t\t</cac:ExternalReference>\n\t\t</cac:Attachment>\n\t</cac:AdditionalDocumentReference>\n\t<cac:AdditionalDocumentReference>\n\t\t<!-- Attached pdf invoice with additional support information -->\n\t\t<cbc:ID>INV_00482.pdf</cbc:ID>\n\t\t<cbc:DocumentDescription>Invoice_with_additional_information</cbc:DocumentDescription>\n\t\t<cac:Attachment>\n\t\t\t<!-- For brevity, this sample Attachment is not representative of an embedded pdf -->\n\t\t\t<cbc:EmbeddedDocumentBinaryObject mimeCode=\"application/pdf\" filename=\"INV_00482.pdf\">aHR0cHM6Ly9naXRodWIuY29tL0EtTlotUEVQUE9ML0EtTlotUEVQUE9MLUJJUy0zLjA=</cbc:EmbeddedDocumentBinaryObject>\n\t\t</cac:Attachment>\n\t</cac:AdditionalDocumentReference>\n\t<cac:ProjectReference>\n\t\t<cbc:ID>PR_590</cbc:ID>\n\t</cac:ProjectReference>\n\t<cac:AccountingSupplierParty>\n\t\t<!-- Seller details -->\n\t\t<cac:Party>\n\t\t\t<cbc:EndpointID schemeID=\"0151\">47555222000</cbc:EndpointID><!-- Seller 'Peppol ID' -->\n\t\t\t<cac:PartyIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0151\">47555222000</cbc:ID>\n\t\t\t</cac:PartyIdentification>\n\t\t\t<cac:PartyIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0088\">1234567890128</cbc:ID>\n\t\t\t</cac:PartyIdentification>\n\t\t\t<cac:PartyName>\n\t\t\t\t<cbc:Name>Supplier Trading Name Ltd</cbc:Name>\n\t\t\t</cac:PartyName>\n\t\t\t<cac:PostalAddress>\n\t\t\t\t<cbc:StreetName>Office 12</cbc:StreetName>\n\t\t\t\t<cbc:AdditionalStreetName>Main street 1</cbc:AdditionalStreetName>\n\t\t\t\t<cbc:CityName>Harrison</cbc:CityName>\n\t\t\t\t<cbc:PostalZone>2912</cbc:PostalZone>\n\t\t\t\t<cbc:CountrySubentity>NSW</cbc:CountrySubentity>\n\t\t\t\t<cac:AddressLine>\n\t\t\t\t\t<cbc:Line>c/o front desk</cbc:Line>\n\t\t\t\t</cac:AddressLine>\n\t\t\t\t<cac:Country>\n\t\t\t\t\t<cbc:IdentificationCode>AU</cbc:IdentificationCode>\n\t\t\t\t</cac:Country>\n\t\t\t</cac:PostalAddress>\n\t\t\t<cac:PartyTaxScheme>\n\t\t\t\t<cbc:CompanyID>47555222000001</cbc:CompanyID>\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:PartyTaxScheme>\n\t\t\t<cac:PartyLegalEntity>\n\t\t\t\t<cbc:RegistrationName>Supplier Official Name Ltd</cbc:RegistrationName>\n\t\t\t\t<cbc:CompanyID schemeID=\"0151\">47555222000</cbc:CompanyID><!-- Seller ABN -->\n\t\t\t\t<cbc:CompanyLegalForm>Partnership</cbc:CompanyLegalForm>\n\t\t\t</cac:PartyLegalEntity>\n\t\t\t<cac:Contact>\n\t\t\t\t<cbc:Name>Ronald Ekk</cbc:Name>\n\t\t\t\t<cbc:Telephone>Mobile 0430123456</cbc:Telephone>\n\t\t\t\t<cbc:ElectronicMail>ronald.ekk@qualitygoods.com.au</cbc:ElectronicMail>\n\t\t\t</cac:Contact>\n\t\t</cac:Party>\n\t</cac:AccountingSupplierParty>\n\t<cac:AccountingCustomerParty>\n\t\t<!-- Buyer/customer details -->\n\t\t<cac:Party>\n\t\t\t<cbc:EndpointID schemeID=\"0151\">91888222000</cbc:EndpointID><!-- Buyer/customer 'Peppol ID' -->\n\t\t\t<cac:PartyIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0088\">1234567890135</cbc:ID><!-- Buyer/customer account number, assigned by the supplier -->\n\t\t\t</cac:PartyIdentification>\n\t\t\t<cac:PartyName>\n\t\t\t\t<cbc:Name>Trotters Trading Co Ltd</cbc:Name>\n\t\t\t</cac:PartyName>\n\t\t\t<cac:PostalAddress>\n\t\t\t\t<cbc:StreetName>Floor 15</cbc:StreetName>\n\t\t\t\t<cbc:AdditionalStreetName>100 Queen Street</cbc:AdditionalStreetName>\n\t\t\t\t<cbc:CityName>Sydney</cbc:CityName>\n\t\t\t\t<cbc:PostalZone>2000</cbc:PostalZone>\n\t\t\t\t<cbc:CountrySubentity>NSW</cbc:CountrySubentity>\n\t\t\t\t<cac:AddressLine>\n\t\t\t\t\t<cbc:Line>c/o reception</cbc:Line>\n\t\t\t\t</cac:AddressLine>\n\t\t\t\t<cac:Country>\n\t\t\t\t\t<cbc:IdentificationCode>AU</cbc:IdentificationCode>\n\t\t\t\t</cac:Country>\n\t\t\t</cac:PostalAddress>\n\t\t\t<cac:PartyTaxScheme>\n\t\t\t\t<cbc:CompanyID>91888222000001</cbc:CompanyID>\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:PartyTaxScheme>\n\t\t\t<cac:PartyLegalEntity>\n\t\t\t\t<cbc:RegistrationName>Trotters Incorporated</cbc:RegistrationName>\n\t\t\t\t<cbc:CompanyID schemeID=\"0151\">91888222000</cbc:CompanyID><!-- Buyer/customer ABN -->\n\t\t\t</cac:PartyLegalEntity>\n\t\t\t<cac:Contact>\n\t\t\t\t<cbc:Name>Lisa Johnson</cbc:Name>\n\t\t\t\t<cbc:Telephone>0261234567</cbc:Telephone>\n\t\t\t\t<cbc:ElectronicMail>lj@buyer.com.au</cbc:ElectronicMail>\n\t\t\t</cac:Contact>\n\t\t</cac:Party>\n\t</cac:AccountingCustomerParty>\n\t<cac:PayeeParty>\n\t\t<cac:PartyIdentification>\n\t\t\t<cbc:ID schemeID=\"0151\">91888222000</cbc:ID>\n\t\t</cac:PartyIdentification>\n\t\t<cac:PartyName>\n\t\t\t<cbc:Name>Mr Anderson</cbc:Name>\n\t\t</cac:PartyName>\n\t\t<cac:PartyLegalEntity>\n\t\t\t<cbc:CompanyID schemeID=\"0151\">91888222000</cbc:CompanyID>\n\t\t</cac:PartyLegalEntity>\n\t</cac:PayeeParty>\n\t<cac:TaxRepresentativeParty>\n\t\t<cac:PartyName>\n\t\t\t<cbc:Name>Mr Wilson</cbc:Name>\n\t\t</cac:PartyName>\n\t\t<cac:PostalAddress>\n\t\t\t<cbc:StreetName>16 Stout Street</cbc:StreetName>\n\t\t\t<cbc:AdditionalStreetName>Po box 878</cbc:AdditionalStreetName>\n\t\t\t<cbc:CityName>Sydney</cbc:CityName>\n\t\t\t<cbc:PostalZone>2000</cbc:PostalZone>\n\t\t\t<cbc:CountrySubentity>NSW</cbc:CountrySubentity>\n\t\t\t<cac:AddressLine>\n\t\t\t\t<cbc:Line>Unit 1</cbc:Line>\n\t\t\t</cac:AddressLine>\n\t\t\t<cac:Country>\n\t\t\t\t<cbc:IdentificationCode>AU</cbc:IdentificationCode>\n\t\t\t</cac:Country>\n\t\t</cac:PostalAddress>\n\t\t<cac:PartyTaxScheme>\n\t\t\t<cbc:CompanyID>91888222000001</cbc:CompanyID>\n\t\t\t<cac:TaxScheme>\n\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t</cac:TaxScheme>\n\t\t</cac:PartyTaxScheme>\n\t</cac:TaxRepresentativeParty>\n\t<cac:Delivery>\n\t\t<!-- Delivery date, location and/or person/entity may optionally be included -->\n\t\t<cbc:ActualDeliveryDate>2022-07-01</cbc:ActualDeliveryDate>\n\t\t<cac:DeliveryLocation>\n\t\t\t<cbc:ID schemeID=\"0088\">1234567890135</cbc:ID>\n\t\t\t<cac:Address>\n\t\t\t\t<cbc:StreetName>Delivery street 2</cbc:StreetName>\n\t\t\t\t<cbc:AdditionalStreetName>Building 56</cbc:AdditionalStreetName>\n\t\t\t\t<cbc:CityName>Sydney</cbc:CityName>\n\t\t\t\t<cbc:PostalZone>2000</cbc:PostalZone>\n\t\t\t\t<cbc:CountrySubentity>NSW</cbc:CountrySubentity>\n\t\t\t\t<cac:AddressLine>\n\t\t\t\t\t<cbc:Line>Unit 1</cbc:Line>\n\t\t\t\t</cac:AddressLine>\n\t\t\t\t<cac:Country>\n\t\t\t\t\t<cbc:IdentificationCode>AU</cbc:IdentificationCode>\n\t\t\t\t</cac:Country>\n\t\t\t</cac:Address>\n\t\t</cac:DeliveryLocation>\n\t\t<cac:DeliveryParty>\n\t\t\t<cac:PartyName>\n\t\t\t\t<cbc:Name>Delivery party Name</cbc:Name>\n\t\t\t</cac:PartyName>\n\t\t</cac:DeliveryParty>\n\t</cac:Delivery>\n\t<cac:PaymentMeans>\n\t\t<!-- Multiple payment means/options may be included (refer to https://github.com/A-NZ-PEPPOL for detailed guidance) -->\n\t\t<cbc:PaymentMeansCode name=\"Credit transfer\">30</cbc:PaymentMeansCode>\n\t\t<cbc:PaymentID>PaymentReferenceText</cbc:PaymentID><!-- Customer number/payment reference number to help the Seller assign an incoming payment/reconciliation -->\n\t\t<cac:PayeeFinancialAccount>\n\t\t\t<cbc:ID>AccountNumber</cbc:ID>\n\t\t\t<cbc:Name>AccountName</cbc:Name>\n\t\t\t<cac:FinancialInstitutionBranch>\n\t\t\t\t<cbc:ID>BSB (branch) Number</cbc:ID>\n\t\t\t</cac:FinancialInstitutionBranch>\n\t\t</cac:PayeeFinancialAccount>\n\t</cac:PaymentMeans>\n\t<cac:PaymentMeans>\n\t\t<!-- Option to pay via Direct Debit (e.g. might be included if DD previously established) -->\n\t\t<cbc:PaymentMeansCode name=\"Direct Debit\">49</cbc:PaymentMeansCode>\n\t\t<cbc:PaymentID>PaymentReferenceText</cbc:PaymentID>\n\t\t<cac:PaymentMandate>\n\t\t\t<cbc:ID>mandate id</cbc:ID>\n\t\t\t<cac:PayerFinancialAccount>\n\t\t\t\t<cbc:ID>cust acct nbr</cbc:ID>\n\t\t\t</cac:PayerFinancialAccount>\n\t\t</cac:PaymentMandate>\n\t</cac:PaymentMeans>\n\t<cac:PaymentMeans>\n\t\t<!-- Option to pay via direct credit to PayID -->\n\t\t<cbc:PaymentMeansCode name=\"Credit transfer\">30</cbc:PaymentMeansCode>\n\t\t<cbc:PaymentID>PaymentReferenceText</cbc:PaymentID>\n\t\t<cac:PayeeFinancialAccount>\n\t\t\t<cbc:ID>payee@business1.com.au</cbc:ID><!-- Registered PayID (e.g. phone number, email address etc.) -->\n\t\t\t<cac:FinancialInstitutionBranch>\n\t\t\t\t<cbc:ID>NPP-EMAL</cbc:ID><!-- PayID type -->\n\t\t\t</cac:FinancialInstitutionBranch>\n\t\t</cac:PayeeFinancialAccount>\n\t</cac:PaymentMeans>\n\t<cac:PaymentMeans>\n\t\t<!-- Option to pay via a website -->\n\t\t<cbc:PaymentMeansCode name=\"Credit transfer\">30</cbc:PaymentMeansCode>\n\t\t<cbc:PaymentID>PaymentReferenceText</cbc:PaymentID>\n\t\t<cac:PayeeFinancialAccount>\n\t\t\t<cbc:ID>https://www.yourwebsiteexample.com.au/pay</cbc:ID>\n\t\t\t<cbc:Name>Supplier ABC</cbc:Name>\n\t\t\t<cac:FinancialInstitutionBranch>\n\t\t\t\t<cbc:ID>URI</cbc:ID>\n\t\t\t</cac:FinancialInstitutionBranch>\n\t\t</cac:PayeeFinancialAccount>\n\t</cac:PaymentMeans>\n\t<cac:PaymentMeans>\n\t\t<!-- Option to pay via card (e.g. might be included where payment already made via card) -->\n\t\t<cbc:PaymentMeansCode name=\"Credit card\">54</cbc:PaymentMeansCode>\n\t\t<cbc:PaymentID>PaymentReferenceText</cbc:PaymentID>\n\t\t<cac:CardAccount>\n\t\t\t<cbc:PrimaryAccountNumberID>1456</cbc:PrimaryAccountNumberID>\n\t\t\t<cbc:NetworkID>VISA</cbc:NetworkID>\n\t\t\t<cbc:HolderName>Card holder</cbc:HolderName>\n\t\t</cac:CardAccount>\n\t</cac:PaymentMeans>\n\t<cac:PaymentTerms>\n\t\t<!-- Optional free-text field -->\n\t\t<cbc:Note>Payment within 30 days</cbc:Note>\n\t</cac:PaymentTerms>\n\t<cac:AllowanceCharge>\n\t\t<cbc:ChargeIndicator>true</cbc:ChargeIndicator>\n\t\t<cbc:AllowanceChargeReasonCode>SAA</cbc:AllowanceChargeReasonCode>\n\t\t<cbc:AllowanceChargeReason>Shipping and Handling</cbc:AllowanceChargeReason>\n\t\t<cbc:MultiplierFactorNumeric>10</cbc:MultiplierFactorNumeric>\n\t\t<cbc:Amount currencyID=\"AUD\">150</cbc:Amount>\n\t\t<cbc:BaseAmount currencyID=\"AUD\">1500</cbc:BaseAmount>\n\t\t<cac:TaxCategory>\n\t\t\t<cbc:ID>S</cbc:ID>\n\t\t\t<cbc:Percent>10</cbc:Percent>\n\t\t\t<cac:TaxScheme>\n\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t</cac:TaxScheme>\n\t\t</cac:TaxCategory>\n\t</cac:AllowanceCharge>\n\t<cac:AllowanceCharge>\n\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n\t\t<cbc:AllowanceChargeReasonCode>65</cbc:AllowanceChargeReasonCode>\n\t\t<cbc:AllowanceChargeReason>discount product with production error</cbc:AllowanceChargeReason>\n\t\t<cbc:MultiplierFactorNumeric>20</cbc:MultiplierFactorNumeric>\n\t\t<cbc:Amount currencyID=\"AUD\">10</cbc:Amount>\n\t\t<cbc:BaseAmount currencyID=\"AUD\">50</cbc:BaseAmount>\n\t\t<cac:TaxCategory>\n\t\t\t<cbc:ID>S</cbc:ID>\n\t\t\t<cbc:Percent>10</cbc:Percent>\n\t\t\t<cac:TaxScheme>\n\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t</cac:TaxScheme>\n\t\t</cac:TaxCategory>\n\t</cac:AllowanceCharge>\n\t<cac:TaxTotal>\n\t\t<cbc:TaxAmount currencyID=\"AUD\">152.74</cbc:TaxAmount>\n\t\t<cac:TaxSubtotal>\n\t\t\t<!-- Subtotal for 'S' Standard-rated tax category of 10% GST -->\n\t\t\t<cbc:TaxableAmount currencyID=\"AUD\">1527.40</cbc:TaxableAmount>\n\t\t\t<cbc:TaxAmount currencyID=\"AUD\">152.74</cbc:TaxAmount>\n\t\t\t<cac:TaxCategory>\n\t\t\t\t<cbc:ID>S</cbc:ID>\n\t\t\t\t<cbc:Percent>10</cbc:Percent>\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:TaxCategory>\n\t\t</cac:TaxSubtotal>\n\t\t<cac:TaxSubtotal>\n\t\t\t<!-- Subtotal for 'Z' Zero-rated tax category of 0% GST -->\n\t\t\t<cbc:TaxableAmount currencyID=\"AUD\">100.00</cbc:TaxableAmount>\n\t\t\t<cbc:TaxAmount currencyID=\"AUD\">0.00</cbc:TaxAmount>\n\t\t\t<cac:TaxCategory>\n\t\t\t\t<cbc:ID>Z</cbc:ID>\n\t\t\t\t<cbc:Percent>0</cbc:Percent>\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:TaxCategory>\n\t\t</cac:TaxSubtotal>\n\t</cac:TaxTotal>\n\t<cac:TaxTotal>\n\t\t<cbc:TaxAmount currencyID=\"NZD\">168.23</cbc:TaxAmount>\n\t</cac:TaxTotal>\n\t<cac:LegalMonetaryTotal>\n\t\t<cbc:LineExtensionAmount currencyID=\"AUD\">1487.40</cbc:LineExtensionAmount>\n\t\t<cbc:TaxExclusiveAmount currencyID=\"AUD\">1627.40</cbc:TaxExclusiveAmount>\n\t\t<cbc:TaxInclusiveAmount currencyID=\"AUD\">1780.14</cbc:TaxInclusiveAmount>\n\t\t<cbc:AllowanceTotalAmount currencyID=\"AUD\">10</cbc:AllowanceTotalAmount>\n\t\t<cbc:ChargeTotalAmount currencyID=\"AUD\">150</cbc:ChargeTotalAmount>\n\t\t<cbc:PrepaidAmount currencyID=\"AUD\">50.00</cbc:PrepaidAmount>\n\t\t<cbc:PayableRoundingAmount currencyID=\"AUD\">-0.14</cbc:PayableRoundingAmount>\n\t\t<cbc:PayableAmount currencyID=\"AUD\">1730.00</cbc:PayableAmount>\n\t</cac:LegalMonetaryTotal>\n\t<cac:InvoiceLine>\n\t\t<!-- Line with 10% GST -->\n\t\t<cbc:ID>1</cbc:ID>\n\t\t<cbc:Note>Free text giving more information about the Invoice Line</cbc:Note>\n\t\t<cbc:InvoicedQuantity unitCode=\"E99\">10</cbc:InvoicedQuantity>\n\t\t<cbc:LineExtensionAmount currencyID=\"AUD\">299.90</cbc:LineExtensionAmount>\n\t\t<cbc:AccountingCost>Consulting Fees</cbc:AccountingCost>\n\t\t<cac:InvoicePeriod>\n\t\t\t<cbc:StartDate>2022-06-01</cbc:StartDate>\n\t\t\t<cbc:EndDate>2022-07-30</cbc:EndDate>\n\t\t</cac:InvoicePeriod>\n\t\t<cac:OrderLineReference>\n\t\t\t<cbc:LineID>123</cbc:LineID>\n\t\t</cac:OrderLineReference>\n\t\t<cac:DocumentReference>\n\t\t\t<!-- Invoiced object (e.g. equipment serial nbr) can be included at invoice and/or line levels -->\n\t\t\t<cbc:ID schemeID=\"HWB\">9000074677</cbc:ID>\n\t\t\t<cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>\n\t\t</cac:DocumentReference>\n\t\t<cac:Item>\n\t\t\t<cbc:Description>Widgets True and Fair</cbc:Description>\n\t\t\t<cbc:Name>True-Widgets</cbc:Name>\n\t\t\t<cac:BuyersItemIdentification>\n\t\t\t\t<cbc:ID>W659590</cbc:ID>\n\t\t\t</cac:BuyersItemIdentification>\n\t\t\t<cac:SellersItemIdentification>\n\t\t\t\t<cbc:ID>WG546767</cbc:ID>\n\t\t\t</cac:SellersItemIdentification>\n\t\t\t<cac:StandardItemIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0160\">12345678901231</cbc:ID>\n\t\t\t</cac:StandardItemIdentification>\n\t\t\t<cac:OriginCountry>\n\t\t\t\t<cbc:IdentificationCode>AU</cbc:IdentificationCode>\n\t\t\t</cac:OriginCountry>\n\t\t\t<cac:CommodityClassification>\n\t\t\t\t<cbc:ItemClassificationCode listID=\"SRV\" listVersionID=\"v1.3\">09348023</cbc:ItemClassificationCode>\n\t\t\t</cac:CommodityClassification>\n\t\t\t<cac:CommodityClassification>\n\t\t\t\t<cbc:ItemClassificationCode listID=\"SRV\" listVersionID=\"v1.3\">1009348023</cbc:ItemClassificationCode>\n\t\t\t</cac:CommodityClassification>\n\t\t\t<cac:ClassifiedTaxCategory>\n\t\t\t\t<cbc:ID>S</cbc:ID>\n\t\t\t\t<cbc:Percent>10.00</cbc:Percent>\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:ClassifiedTaxCategory>\n\t\t\t<cac:AdditionalItemProperty>\n\t\t\t\t<cbc:Name>QA</cbc:Name>\n\t\t\t\t<cbc:Value>Class A</cbc:Value>\n\t\t\t</cac:AdditionalItemProperty>\n\t\t\t<cac:AdditionalItemProperty>\n\t\t\t\t<cbc:Name>WARRANTY</cbc:Name>\n\t\t\t\t<cbc:Value>2 years</cbc:Value>\n\t\t\t</cac:AdditionalItemProperty>\n\t\t</cac:Item>\n\t\t<cac:Price>\n\t\t\t<cbc:PriceAmount currencyID=\"AUD\">29.99</cbc:PriceAmount>\n\t\t\t<cac:AllowanceCharge>\n\t\t\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n\t\t\t\t<cbc:Amount currencyID=\"AUD\">0.01</cbc:Amount>\n\t\t\t\t<cbc:BaseAmount currencyID=\"AUD\">30.00</cbc:BaseAmount>\n\t\t\t</cac:AllowanceCharge>\n\t\t</cac:Price>\n\t</cac:InvoiceLine>\n\t<cac:InvoiceLine>\n\t\t<cbc:ID>2</cbc:ID>\n\t\t<cbc:Note>Daily rate includes travel time but not travel expenses</cbc:Note>\n\t\t<cbc:InvoicedQuantity unitCode=\"DAY\">4</cbc:InvoicedQuantity>\n\t\t<cbc:LineExtensionAmount currencyID=\"AUD\">900</cbc:LineExtensionAmount>\n\t\t<cac:OrderLineReference>\n\t\t\t<cbc:LineID>123</cbc:LineID>\n\t\t</cac:OrderLineReference>\n\t\t<cac:AllowanceCharge>\n\t\t\t<cbc:ChargeIndicator>true</cbc:ChargeIndicator>\n\t\t\t<cbc:AllowanceChargeReasonCode>AAF</cbc:AllowanceChargeReasonCode>\n\t\t\t<cbc:AllowanceChargeReason>Off premise service delivery</cbc:AllowanceChargeReason>\n\t\t\t<cbc:MultiplierFactorNumeric>25</cbc:MultiplierFactorNumeric>\n\t\t\t<cbc:Amount currencyID=\"AUD\">200</cbc:Amount>\n\t\t\t<cbc:BaseAmount currencyID=\"AUD\">800</cbc:BaseAmount>\n\t\t</cac:AllowanceCharge>\n\t\t<cac:AllowanceCharge>\n\t\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n\t\t\t<cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>\n\t\t\t<cbc:AllowanceChargeReason>Discount as per contract</cbc:AllowanceChargeReason>\n\t\t\t<cbc:MultiplierFactorNumeric>12.5</cbc:MultiplierFactorNumeric>\n\t\t\t<cbc:Amount currencyID=\"AUD\">100</cbc:Amount>\n\t\t\t<cbc:BaseAmount currencyID=\"AUD\">800</cbc:BaseAmount>\n\t\t</cac:AllowanceCharge>\n\t\t<cac:Item>\n\t\t\t<cbc:Description>Description 2</cbc:Description>\n\t\t\t<cbc:Name>item name 2</cbc:Name>\n\t\t\t<cac:StandardItemIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0160\">12345678901248</cbc:ID>\n\t\t\t</cac:StandardItemIdentification>\n\t\t\t<cac:OriginCountry>\n\t\t\t\t<cbc:IdentificationCode>NO</cbc:IdentificationCode>\n\t\t\t</cac:OriginCountry>\n\t\t\t<cac:CommodityClassification>\n\t\t\t\t<cbc:ItemClassificationCode listID=\"SRV\">09348023</cbc:ItemClassificationCode>\n\t\t\t</cac:CommodityClassification>\n\t\t\t<cac:ClassifiedTaxCategory>\n\t\t\t\t<cbc:ID>S</cbc:ID>\n\t\t\t\t<cbc:Percent>10</cbc:Percent>\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:ClassifiedTaxCategory>\n\t\t</cac:Item>\n\t\t<cac:Price>\n\t\t\t<cbc:PriceAmount currencyID=\"AUD\">400</cbc:PriceAmount>\n\t\t\t<cbc:BaseQuantity unitCode=\"DAY\">2</cbc:BaseQuantity>\n\t\t</cac:Price>\n\t</cac:InvoiceLine>\n\t<cac:InvoiceLine>\n\t\t<cbc:ID>3</cbc:ID>\n\t\t<cbc:Note>Invoice Line Description</cbc:Note>\n\t\t<cbc:InvoicedQuantity unitCode=\"M66\">25</cbc:InvoicedQuantity>\n\t\t<cbc:LineExtensionAmount currencyID=\"AUD\">187.50</cbc:LineExtensionAmount>\n\t\t<cbc:AccountingCost>Consulting Fees</cbc:AccountingCost>\n\t\t<cac:InvoicePeriod>\n\t\t\t<cbc:StartDate>2022-06-01</cbc:StartDate>\n\t\t\t<cbc:EndDate>2022-07-30</cbc:EndDate>\n\t\t</cac:InvoicePeriod>\n\t\t<cac:OrderLineReference>\n\t\t\t<cbc:LineID>123</cbc:LineID>\n\t\t</cac:OrderLineReference>\n\t\t<cac:DocumentReference>\n\t\t\t<cbc:ID schemeID=\"HWB\">9000074677</cbc:ID>\n\t\t\t<cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>\n\t\t</cac:DocumentReference>\n\t\t<cac:Item>\n\t\t\t<cbc:Description>Widgets seconds</cbc:Description>\n\t\t\t<cbc:Name>Widgets (seconds)</cbc:Name>\n\t\t\t<cac:BuyersItemIdentification>\n\t\t\t\t<cbc:ID>W659590</cbc:ID>\n\t\t\t</cac:BuyersItemIdentification>\n\t\t\t<cac:SellersItemIdentification>\n\t\t\t\t<cbc:ID>WG546767</cbc:ID>\n\t\t\t</cac:SellersItemIdentification>\n\t\t\t<cac:StandardItemIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0160\">12345678901255</cbc:ID>\n\t\t\t</cac:StandardItemIdentification>\n\t\t\t<cac:OriginCountry>\n\t\t\t\t<cbc:IdentificationCode>AU</cbc:IdentificationCode>\n\t\t\t</cac:OriginCountry>\n\t\t\t<cac:CommodityClassification>\n\t\t\t\t<cbc:ItemClassificationCode listID=\"SRV\">09348023</cbc:ItemClassificationCode>\n\t\t\t</cac:CommodityClassification>\n\t\t\t<cac:ClassifiedTaxCategory>\n\t\t\t\t<cbc:ID>S</cbc:ID>\n\t\t\t\t<cbc:Percent>10</cbc:Percent>\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:ClassifiedTaxCategory>\n\t\t</cac:Item>\n\t\t<cac:Price>\n\t\t\t<cbc:PriceAmount currencyID=\"AUD\">7.50</cbc:PriceAmount>\n\t\t\t<cac:AllowanceCharge>\n\t\t\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator>\n\t\t\t\t<cbc:Amount currencyID=\"AUD\">0.00</cbc:Amount>\n\t\t\t\t<cbc:BaseAmount currencyID=\"AUD\">7.50</cbc:BaseAmount>\n\t\t\t</cac:AllowanceCharge>\n\t\t</cac:Price>\n\t</cac:InvoiceLine>\n\t<cac:InvoiceLine>\n\t\t<cbc:ID>4</cbc:ID>\n\t\t<cbc:InvoicedQuantity unitCode=\"DAY\">2</cbc:InvoicedQuantity>\n\t\t<cbc:LineExtensionAmount currencyID=\"AUD\">100</cbc:LineExtensionAmount>\n\t\t<cac:OrderLineReference>\n\t\t\t<cbc:LineID>123</cbc:LineID>\n\t\t</cac:OrderLineReference>\n\t\t<cac:Item>\n\t\t\t<cbc:Description>Description 4</cbc:Description>\n\t\t\t<cbc:Name>item name 4</cbc:Name>\n\t\t\t<cac:ClassifiedTaxCategory>\n\t\t\t\t<cbc:ID>Z</cbc:ID>\n\t\t\t\t<cbc:Percent>0</cbc:Percent>\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:ClassifiedTaxCategory>\n\t\t</cac:Item>\n\t\t<cac:Price>\n\t\t\t<cbc:PriceAmount currencyID=\"AUD\">50</cbc:PriceAmount>\n\t\t</cac:Price>\n\t</cac:InvoiceLine>\n</Invoice>\n</StandardBusinessDocument>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transactions?networkType=PEPPOL",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "networkType",
+									"value": "PEPPOL",
+									"description": "(Required) "
+								},
+								{
+									"key": "transformationId",
+									"value": "",
+									"description": "THIS WILL NOT BE IMPLEMENTED FOR PHASE 1",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Submit a transaction in its native format for further processing by the transaction service, or in case a transformation id is applied in the agreed source format of the transformation.  Upon submission a globally unique transaction id will be generated and returned back in the response. Idempotency: If you need idempotency to be guaranteed you need to set an idempotent key in the header. The key must be unique for your organisation and will auto-expire after  14 days."
+					},
+					"response": [
+						{
+							"name": "The request has been accepted and you can query the service for the status of the outcome using the generated id that was returned.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Idempotency-Key",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<TODO />",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/transactions?networkType=PEPPOL&transformationId=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "networkType",
+											"value": "PEPPOL"
+										},
+										{
+											"key": "transformationId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"urn:uuid:cc27a18b-862f-db51-33b7-02d\"\n}"
+						},
+						{
+							"name": "Invalid input.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Idempotency-Key",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<TODO />",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/transactions?networkType=PEPPOL&transformationId=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "networkType",
+											"value": "PEPPOL"
+										},
+										{
+											"key": "transformationId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "POST SG PINT Invoice v1.0",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Idempotency-Key",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<StandardBusinessDocument xmlns=\"http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader\">\n    <StandardBusinessDocumentHeader>\n        <HeaderVersion>1.0</HeaderVersion>\n        <Sender>\n            <Identifier Authority=\"iso6523-actorid-upis\">0007:API_TEST_SENDER</Identifier>\n        </Sender>\n        <Receiver>\n            <Identifier Authority=\"iso6523-actorid-upis\">0007:API_TEST_RECEIVER</Identifier>\n        </Receiver>\n        <DocumentIdentification>\n            <Standard>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2</Standard>\n            <TypeVersion>2.1</TypeVersion>\n            <InstanceIdentifier>42ddd1e2-f38a-4306-9f16-f3834958376c</InstanceIdentifier>\n            <Type>Invoice</Type>\n            <CreationDateAndTime>2024-08-19T08:40:04</CreationDateAndTime>\n        </DocumentIdentification>\n        <BusinessScope> \n            <Scope>\n                <Type>DOCUMENTID</Type>\n                <InstanceIdentifier>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:billing-1@sg-1::2.1</InstanceIdentifier>\n                <Identifier>peppol-doctype-wildcard</Identifier>\n            </Scope>\n            <Scope>\n                <Type>PROCESSID</Type>\n                <InstanceIdentifier>urn:peppol:bis:billing</InstanceIdentifier>\n                <Identifier>cenbii-procid-ubl</Identifier>\n            </Scope>\n            <Scope>\n                <Type>COUNTRY_C1</Type>\n                <InstanceIdentifier>SG</InstanceIdentifier>\n            </Scope>\n        </BusinessScope>\n    </StandardBusinessDocumentHeader>\n    <Invoice xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\" xmlns:ccts=\"urn:un:unece:uncefact:documentation:2\" xmlns:ext=\"urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2\" xmlns:qdt=\"urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2\" xmlns:udt=\"urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">\n\n<!-- \nSingapore invoice\n-->\n\n\t<cbc:UBLVersionID>2.1</cbc:UBLVersionID>\n\t<cbc:CustomizationID>urn:peppol:pint:billing-1@sg-1</cbc:CustomizationID> <!-- BT-24 -->\n\t<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID> <!-- BT-23 -->\n\t<cbc:ID>F012345</cbc:ID> <!-- BT-1 -->\n\t<cbc:IssueDate>2018-12-01</cbc:IssueDate> <!-- BT-2 -->\n\t<cbc:DueDate>2019-01-01</cbc:DueDate> <!-- BT-9 -->\n\t<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode> <!-- BT-3 -->\n\t<cbc:Note>Ordered at trade show</cbc:Note> <!-- BT-22 -->\n\t<cbc:DocumentCurrencyCode>SGD</cbc:DocumentCurrencyCode> <!-- BT-5 -->\n\t<cbc:AccountingCost>102035</cbc:AccountingCost> <!-- BT-19 -->\n\t<cbc:BuyerReference>123</cbc:BuyerReference> <!-- BT-10 -->\n\t<cac:InvoicePeriod>\n\t\t<cbc:StartDate>2018-11-01</cbc:StartDate> <!-- BT-73 -->\n\t\t<cbc:EndDate>2018-11-30</cbc:EndDate> <!-- BT-74 -->\n\t</cac:InvoicePeriod>\n\t<cac:OrderReference>\n\t\t<cbc:ID>123</cbc:ID> <!-- BT-13 -->\n\t\t<cbc:SalesOrderID>123</cbc:SalesOrderID>  <!-- BT-14 -->\n\t</cac:OrderReference>\n\t<cac:BillingReference>\n\t\t<cac:InvoiceDocumentReference>\n\t\t\t<cbc:ID>invnr002</cbc:ID>  <!-- BT-25 -->\n\t\t\t<cbc:IssueDate>2018-06-01</cbc:IssueDate>  <!-- BT-26 -->\n\t\t</cac:InvoiceDocumentReference>\n\t</cac:BillingReference>\n\t<cac:DespatchDocumentReference>\n\t\t<cbc:ID>987</cbc:ID>  <!-- BT-16 -->\n\t</cac:DespatchDocumentReference>\n\t<cac:ReceiptDocumentReference>\n\t\t<cbc:ID>654</cbc:ID>  <!-- BT-15 -->\n\t</cac:ReceiptDocumentReference>\n\t<cac:OriginatorDocumentReference>\n\t\t<cbc:ID>753</cbc:ID>  <!-- BT-17 -->\n\t</cac:OriginatorDocumentReference>\n\t<cac:ContractDocumentReference>\n\t\t<cbc:ID>Contract321</cbc:ID> <!-- BT-12 -->\n\t</cac:ContractDocumentReference>\n\t<cac:AdditionalDocumentReference>\n\t\t<cbc:ID>doc1</cbc:ID>  <!-- BT-122 -->\n\t\t<cbc:DocumentDescription>Usage breakdown</cbc:DocumentDescription>  <!-- BT-123 -->\n\t\t<cac:Attachment>\n\t\t\t<cac:ExternalReference>\n\t\t\t\t<cbc:URI>http://www.salescompany.be/breakdown001.html</cbc:URI>  <!-- BT-124 -->\n\t\t\t</cac:ExternalReference>\n\t\t</cac:Attachment>\n\t</cac:AdditionalDocumentReference>\n\t<cac:AdditionalDocumentReference>\n\t\t<cbc:ID>doc2</cbc:ID>  <!-- BT-122 -->\n\t\t<cbc:DocumentDescription>Usage summary</cbc:DocumentDescription>  <!-- BT-123 -->\n\t\t<cac:Attachment>\n\t\t\t<cbc:EmbeddedDocumentBinaryObject filename=\"report.csv\" mimeCode=\"text/csv\">aHR0cHM6Ly90ZXN0LXZlZmEuZGlmaS5uby9wZXBwb2xiaXMvcG9hY2MvYmlsbGluZy8zLjAvYmlzLw==</cbc:EmbeddedDocumentBinaryObject>   <!-- BT-125 -->\n\t\t</cac:Attachment>\n\t</cac:AdditionalDocumentReference>\t\n\t<cac:AdditionalDocumentReference>\n\t\t<cbc:ID schemeID=\"ABZ\">951</cbc:ID>  <!-- BT-18 -->\n\t\t<cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>  <!-- BT-18 qualifier -->\n\t</cac:AdditionalDocumentReference>\n\t<cac:ProjectReference>\n\t\t<cbc:ID>321</cbc:ID> <!-- BT-11 -->\n\t</cac:ProjectReference>\n\t<cac:AccountingSupplierParty>\n\t\t<cac:Party>\n\t\t\t<cbc:EndpointID schemeID=\"0088\">5790000436064</cbc:EndpointID> <!-- BT-34, BT-34-1 -->\n\t\t\t<cac:PartyIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0035\">5790000436071</cbc:ID> <!-- BT-29, BT-29-1 -->\n\t\t\t</cac:PartyIdentification>\n\t\t\t\t\t<cac:PartyName>\n\t\t\t\t<cbc:Name>Sales trade name</cbc:Name> <!-- BT-28 -->\n\t\t\t</cac:PartyName>\n\t\t\t<cac:PostalAddress>\n\t\t\t\t<cbc:StreetName>Mainstreet 112</cbc:StreetName> <!-- BT-35 -->\n\t\t\t\t<cbc:AdditionalStreetName>Building 3</cbc:AdditionalStreetName> <!-- BT-36 -->\n\t\t\t\t<cbc:CityName>Singapore</cbc:CityName> <!-- BT-37 -->\n\t\t\t\t<cbc:PostalZone>1000</cbc:PostalZone> <!-- BT-38 -->\n\t\t\t\t<cbc:CountrySubentity>Singapore</cbc:CountrySubentity> <!-- BT-39 -->\n\t\t\t\t<cac:AddressLine>\n\t\t\t\t\t<cbc:Line>Sales department</cbc:Line> <!-- BT-162 -->\n\t\t\t\t</cac:AddressLine>\n\t\t\t\t<cac:Country>\n\t\t\t\t\t<cbc:IdentificationCode>SG</cbc:IdentificationCode> <!-- BT-40 -->\n\t\t\t\t</cac:Country>\n\t\t\t</cac:PostalAddress>\n\t\t\t<cac:PartyTaxScheme>\n\t\t\t\t<cbc:CompanyID>M2-1234567-K</cbc:CompanyID> <!-- BT-31 -->\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID> <!-- BT-31, qualifier -->\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:PartyTaxScheme>\n\t\t\t<cac:PartyLegalEntity>\n\t\t\t\t<cbc:RegistrationName>Gallery Photo Supplier</cbc:RegistrationName> <!-- BT-27 -->\n\t\t\t</cac:PartyLegalEntity>\n\t\t\t<cac:Contact>\n\t\t\t\t<cbc:Name>John Doe</cbc:Name>  <!-- BT-41 -->\n\t\t\t\t<cbc:Telephone>4621230</cbc:Telephone> <!-- BT-42 -->\n\t\t\t\t<cbc:ElectronicMail>john@salescompany.sg</cbc:ElectronicMail> <!-- BT-43 -->\n\t\t\t</cac:Contact>\n\t\t</cac:Party>\n\t</cac:AccountingSupplierParty>\n\t<cac:AccountingCustomerParty>\n\t\t<cac:Party>\n\t\t\t<cbc:EndpointID schemeID=\"0088\">5790000436071</cbc:EndpointID> <!-- BT-49, BT-49-1 -->\n\t\t\t<cac:PartyIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0035\">345KS5324</cbc:ID> <!-- BT-46, BT-46-1 -->\n\t\t\t</cac:PartyIdentification>\n\t\t\t<cac:PartyName>\n\t\t\t\t<cbc:Name>Buyer trade name</cbc:Name> <!-- BT-44 -->\n\t\t\t</cac:PartyName>\n\t\t\t<cac:PostalAddress>\n\t\t\t\t<cbc:StreetName>Central road 56</cbc:StreetName> <!-- BT-50 -->\n\t\t\t\t<cbc:AdditionalStreetName>Second floor</cbc:AdditionalStreetName> <!-- BT-51 -->\n\t\t\t\t<cbc:CityName>Singapore</cbc:CityName> <!-- BT-52 -->\n\t\t\t\t<cbc:PostalZone>101</cbc:PostalZone> <!-- BT-53 -->\n\t\t\t\t<cbc:CountrySubentity>Singapore</cbc:CountrySubentity> <!-- BT-54 -->\n\t\t\t\t<cac:AddressLine>\n\t\t\t\t\t<cbc:Line>Accounting department</cbc:Line> <!-- BT-163 -->\n\t\t\t\t</cac:AddressLine>\t\t\t\t\n\t\t\t\t<cac:Country>\n\t\t\t\t\t<cbc:IdentificationCode>SG</cbc:IdentificationCode> <!-- BT-55 -->\n\t\t\t\t</cac:Country>\n\t\t\t</cac:PostalAddress>\n\t\t\t<cac:PartyLegalEntity>\n\t\t\t\t<cbc:RegistrationName>IMDA</cbc:RegistrationName> <!-- BT-45 -->\n\t\t\t</cac:PartyLegalEntity>\n\t\t\t<cac:Contact>\n\t\t\t\t<cbc:Name>Bill</cbc:Name> <!-- BT-56 -->\n\t\t\t\t<cbc:Telephone>5121230</cbc:Telephone> <!-- BT-57 -->\n\t\t\t\t<cbc:ElectronicMail>bill@imda.sg</cbc:ElectronicMail> <!-- BT-58 -->\n\t\t\t</cac:Contact>\n\t\t</cac:Party>\n\t</cac:AccountingCustomerParty>\n\t<cac:PayeeParty>\t\n\t\t<cac:PartyIdentification>\n\t\t\t<cbc:ID schemeID=\"0035\">Payee123</cbc:ID> <!-- BT-60, BT-60-1 -->\n\t\t</cac:PartyIdentification>\n\t\t<cac:PartyName>\n\t\t\t<cbc:Name>Faktor Inc</cbc:Name> <!-- BT-59 -->\n\t\t</cac:PartyName>\n\t\t<cac:PartyLegalEntity>\n\t\t\t<cbc:CompanyID>5507983699</cbc:CompanyID> <!-- BT-61, BT-61-1 -->\n\t\t</cac:PartyLegalEntity>\n\t</cac:PayeeParty>\n\t<cac:TaxRepresentativeParty>\t\n\t\t<cac:PartyName>\n\t\t\t<cbc:Name>TaxRepresentative name</cbc:Name> <!-- BT-62 -->\n\t\t</cac:PartyName>\n\t\t<cac:PostalAddress>\n\t\t\t<cbc:StreetName>Rue Cler 99</cbc:StreetName> <!-- BT-64 -->\n\t\t\t<cbc:AdditionalStreetName>Ground floor</cbc:AdditionalStreetName> <!-- BT-65 -->\n\t\t\t<cbc:CityName>Paris</cbc:CityName> <!-- BT-66 -->\n\t\t\t<cbc:PostalZone>220</cbc:PostalZone> <!-- BT-67 -->\n\t\t\t<cbc:CountrySubentity>Île-de-France</cbc:CountrySubentity> <!-- BT-68 -->\n\t\t\t<cac:AddressLine>\n\t\t\t\t<cbc:Line>Tax service department</cbc:Line> <!-- BT-164 -->\n\t\t\t</cac:AddressLine>\t\t\t\t\n\t\t\t<cac:Country>\n\t\t\t\t<cbc:IdentificationCode>FR</cbc:IdentificationCode> <!-- BT-69 -->\n\t\t\t</cac:Country>\n\t\t</cac:PostalAddress>\n\t\t<cac:PartyTaxScheme>\n\t\t\t<cbc:CompanyID>FR98746</cbc:CompanyID> <!-- BT-63 -->\n\t\t\t<cac:TaxScheme>\n\t\t\t\t<cbc:ID>GST</cbc:ID> <!-- BT-63, qualifier -->\n\t\t\t</cac:TaxScheme>\n\t\t</cac:PartyTaxScheme>\n\t</cac:TaxRepresentativeParty>\n\t<cac:Delivery>\n\t\t<cbc:ActualDeliveryDate>2010-08-31</cbc:ActualDeliveryDate> <!-- BT-72 -->\t\t\n\t\t<cac:DeliveryLocation>\n\t\t\t<cbc:ID schemeID=\"0035\">6754238987648</cbc:ID> <!-- BT-71, BT-71-1 -->\n\t\t\t<cac:Address>\n\t\t\t\t<cbc:StreetName>Coolsingel Rotterdam 12</cbc:StreetName> <!-- BT-75 -->\n\t\t\t\t<cbc:AdditionalStreetName>By the big house</cbc:AdditionalStreetName> <!-- BT-76 -->\n\t\t\t\t<cbc:CityName>Rotterdam</cbc:CityName> <!-- BT-77 -->\n\t\t\t\t<cbc:PostalZone>700</cbc:PostalZone> <!-- BT-78 -->\n\t\t\t\t<cbc:CountrySubentity>South Holland</cbc:CountrySubentity> <!-- BT-79 -->\n\t\t\t\t<cac:AddressLine>\n\t\t\t\t\t<cbc:Line>Delivery department</cbc:Line> <!-- BT-165 -->\n\t\t\t\t</cac:AddressLine>\t\t\t\t\n\t\t\t\t<cac:Country>\n\t\t\t\t\t<cbc:IdentificationCode>SG</cbc:IdentificationCode> <!-- BT-80 -->\n\t\t\t\t</cac:Country>\n\t\t\t</cac:Address>\n\t\t</cac:DeliveryLocation>\n\t\t<cac:DeliveryParty>\n\t\t\t<cac:PartyName>\n\t\t\t\t<cbc:Name>Delivery services Inc.</cbc:Name> <!-- BT-70 -->\n\t\t\t</cac:PartyName>\n\t\t</cac:DeliveryParty>\n\t</cac:Delivery>\n\t<cac:PaymentMeans>\n\t\t<cbc:PaymentMeansCode name=\"Bank transfer\">30</cbc:PaymentMeansCode> <!-- BT-82, BT-81 -->\n\t\t<cbc:PaymentID>gr12345</cbc:PaymentID> <!-- BT-83 -->\n\t\t<cac:PayeeFinancialAccount>\n\t\t\t<cbc:ID>000166000001</cbc:ID> <!-- BT-84 -->\n\t\t\t<cbc:Name>Payee current account</cbc:Name> <!-- BT-85 -->\n\t\t\t<cac:FinancialInstitutionBranch>\n\t\t\t\t<cbc:ID>ICDLOG</cbc:ID> <!-- BT-86 -->\n\t\t\t</cac:FinancialInstitutionBranch>\n\t\t</cac:PayeeFinancialAccount>\n\t</cac:PaymentMeans>\n\t<cac:PaymentTerms>\n\t\t<cbc:Note>Late fees of 1% charged from due date</cbc:Note> <!-- BT-20 -->\n\t</cac:PaymentTerms>\n\t<cac:TaxTotal>\n\t\t<cbc:TaxAmount currencyID=\"SGD\">3052.35</cbc:TaxAmount> <!-- BT-110 -->\n\t\t<cac:TaxSubtotal>\n\t\t\t<cbc:TaxableAmount currencyID=\"SGD\">33915.00</cbc:TaxableAmount> <!-- BT-116 -->\n\t\t\t<cbc:TaxAmount currencyID=\"SGD\">3052.35</cbc:TaxAmount> <!-- BT-117 -->\n\t\t\t<cac:TaxCategory>\n\t\t\t\t<cbc:ID>SR</cbc:ID> <!-- BT-118 -->\n\t\t\t\t<cbc:Percent>9</cbc:Percent> <!-- BT-119 -->\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID> <!-- BT-118, qualifier -->\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:TaxCategory>\n\t\t</cac:TaxSubtotal>\n\t</cac:TaxTotal>\n\t<cac:LegalMonetaryTotal>\n\t\t<cbc:LineExtensionAmount currencyID=\"SGD\">33915.00</cbc:LineExtensionAmount> <!-- BT-106 -->\n\t\t<cbc:TaxExclusiveAmount currencyID=\"SGD\">33915.00</cbc:TaxExclusiveAmount> <!-- BT-109 -->\n\t\t<cbc:TaxInclusiveAmount currencyID=\"SGD\">36967.35</cbc:TaxInclusiveAmount> <!-- BT-112 -->\n\t\t<cbc:AllowanceTotalAmount currencyID=\"SGD\">0.00</cbc:AllowanceTotalAmount> <!-- BT-107 -->\n\t\t<cbc:ChargeTotalAmount currencyID=\"SGD\">0.00</cbc:ChargeTotalAmount> <!-- BT-108 -->\n\t\t<cbc:PrepaidAmount currencyID=\"SGD\">0.00</cbc:PrepaidAmount> <!-- BT-113 -->\n\t\t<cbc:PayableRoundingAmount currencyID=\"SGD\">0.0</cbc:PayableRoundingAmount> <!-- BT-114 -->\n\t\t<cbc:PayableAmount currencyID=\"SGD\">36967.35</cbc:PayableAmount> <!-- BT-115 -->\n\t</cac:LegalMonetaryTotal>\n\t<cac:InvoiceLine>\n\t\t<cbc:ID>1</cbc:ID> <!-- BT-126 -->\n\t\t<cbc:Note>The equipment has 3 year warranty.</cbc:Note> <!-- BT-127 -->\n\t\t<cbc:InvoicedQuantity unitCode=\"H87\">10</cbc:InvoicedQuantity> <!-- BT-130, BT-129 -->\n\t\t<cbc:LineExtensionAmount currencyID=\"SGD\">855.00</cbc:LineExtensionAmount> <!-- BT-131 -->\n\t\t<cbc:AccountingCost>Cost id 654</cbc:AccountingCost> <!-- BT-133 -->\n\t\t<cac:InvoicePeriod>\n\t\t\t<cbc:StartDate>2018-11-01</cbc:StartDate> <!-- BT-134 -->\n\t\t\t<cbc:EndDate>2018-11-30</cbc:EndDate> <!-- BT-135 -->\n\t\t</cac:InvoicePeriod>\n\t\t<cac:OrderLineReference>\n\t\t\t<cbc:LineID>1</cbc:LineID> <!-- BT-132 -->\n\t\t</cac:OrderLineReference>\n\t\t<cac:DocumentReference>\n\t\t\t<cbc:ID schemeID=\"ABZ\">AB-123</cbc:ID> <!-- BT-128, BT-128-1 -->\n\t\t\t<cbc:DocumentTypeCode>130</cbc:DocumentTypeCode> <!-- BT-128, qualifier -->\n\t\t</cac:DocumentReference>\n\t\t<cac:AllowanceCharge>\n\t\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator> <!-- qualifier -->\n\t\t\t<cbc:AllowanceChargeReasonCode>100</cbc:AllowanceChargeReasonCode> <!-- BT-140, BT-145 -->\n\t\t\t<cbc:AllowanceChargeReason>Line discount</cbc:AllowanceChargeReason> <!-- BT-139, BT-144 -->\n\t\t\t<cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric> <!-- BT-138, BT-143 -->\n\t\t\t<cbc:Amount currencyID=\"SGD\">45.00</cbc:Amount> <!-- BT-136, BT-141 -->\n\t\t\t<cbc:BaseAmount currencyID=\"SGD\">900.00</cbc:BaseAmount> <!-- BT-137, BT-142 -->\n\t\t</cac:AllowanceCharge>\n\t\t<cac:Item>\n\t\t\t<cbc:Name>Yashica MG2</cbc:Name> <!-- BT-153 -->\n\t\t\t<cac:SellersItemIdentification>\n\t\t\t\t<cbc:ID>Item1</cbc:ID> <!-- BT-155 -->\n\t\t\t</cac:SellersItemIdentification>\n\t\t\t<cac:StandardItemIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0160\">1234567890121</cbc:ID> <!-- BT-157, BT-157-1 -->\n\t\t\t</cac:StandardItemIdentification>\n\t\t\t<cac:OriginCountry>\n\t\t\t\t<cbc:IdentificationCode>CH</cbc:IdentificationCode> <!-- BT-159 -->\n\t\t\t</cac:OriginCountry>\n\t\t\t<cac:CommodityClassification>\n\t\t\t\t<cbc:ItemClassificationCode listID=\"MP\">43211503</cbc:ItemClassificationCode> <!-- BT-158, BT-158-1 -->\n\t\t\t</cac:CommodityClassification>\n\t\t\t<cac:ClassifiedTaxCategory>\n\t\t\t\t<cbc:ID>SR</cbc:ID> <!-- BT-151 -->\n\t\t\t\t<cbc:Percent>9</cbc:Percent> <!-- BT-152 -->\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:ClassifiedTaxCategory>\n\t\t\t<cac:AdditionalItemProperty>\n\t\t\t\t<cbc:Name>Colour</cbc:Name> <!-- BT-160 -->\n\t\t\t\t<cbc:Value>Black</cbc:Value> <!-- BT-161 -->\n\t\t\t</cac:AdditionalItemProperty>\n\t\t</cac:Item>\n\t\t<cac:Price>\n\t\t\t<cbc:PriceAmount currencyID=\"SGD\">90.00</cbc:PriceAmount> <!-- BT-146 -->\n\t\t\t<cbc:BaseQuantity unitCode=\"H87\">1</cbc:BaseQuantity> <!-- BT-149, BT-150 -->\n\t\t</cac:Price>\n\t</cac:InvoiceLine>\n\t<cac:InvoiceLine>\n\t\t<cbc:ID>2</cbc:ID> <!-- BT-126 -->\n\t\t<cbc:InvoicedQuantity unitCode=\"H87\">20</cbc:InvoicedQuantity> <!-- BT-130, BT-129 -->\n\t\t<cbc:LineExtensionAmount currencyID=\"SGD\">19000.00</cbc:LineExtensionAmount> <!-- BT-131 -->\n\t\t<cac:AllowanceCharge>\n\t\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator> <!-- qualifier -->\n\t\t\t<cbc:AllowanceChargeReasonCode>100</cbc:AllowanceChargeReasonCode> <!-- BT-140, BT-145 -->\n\t\t\t<cbc:AllowanceChargeReason>Line discount</cbc:AllowanceChargeReason> <!-- BT-139, BT-144 -->\n\t\t\t<cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric> <!-- BT-138, BT-143 -->\n\t\t\t<cbc:Amount currencyID=\"SGD\">1000.00</cbc:Amount> <!-- BT-136, BT-141 -->\n\t\t\t<cbc:BaseAmount currencyID=\"SGD\">20000.00</cbc:BaseAmount> <!-- BT-137, BT-142 -->\n\t\t</cac:AllowanceCharge>\t\t\n\t\t<cac:Item>\n\t\t\t<cbc:Name>Pentax Z-1 Body</cbc:Name> <!-- BT-153 -->\n\t\t\t<cac:SellersItemIdentification>\n\t\t\t\t<cbc:ID>Item2</cbc:ID> <!-- BT-155 -->\n\t\t\t</cac:SellersItemIdentification>\n\t\t\t<cac:StandardItemIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0160\">1234567890121</cbc:ID> <!-- BT-157, BT-157-1 -->\n\t\t\t</cac:StandardItemIdentification>\n\t\t\t<cac:OriginCountry>\n\t\t\t\t<cbc:IdentificationCode>CH</cbc:IdentificationCode> <!-- BT-159 -->\n\t\t\t</cac:OriginCountry>\n\t\t\t<cac:CommodityClassification>\n\t\t\t\t<cbc:ItemClassificationCode listID=\"MP\">43211503</cbc:ItemClassificationCode> <!-- BT-158, BT-158-1 -->\n\t\t\t</cac:CommodityClassification>\n\t\t\t<cac:ClassifiedTaxCategory>\n\t\t\t\t<cbc:ID>SR</cbc:ID> <!-- BT-151 -->\n\t\t\t\t<cbc:Percent>9</cbc:Percent> <!-- BT-152 -->\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:ClassifiedTaxCategory>\n\t\t\t</cac:Item>\n\t\t<cac:Price>\n\t\t\t<cbc:PriceAmount currencyID=\"SGD\">1000.00</cbc:PriceAmount> <!-- BT-146 -->\n\t\t\t<cbc:BaseQuantity unitCode=\"H87\">1</cbc:BaseQuantity> <!-- BT-149, BT-150 -->\n\t\t</cac:Price>\n\t</cac:InvoiceLine>\n\t<cac:InvoiceLine>\n\t\t<cbc:ID>3</cbc:ID> <!-- BT-126 -->\n\t\t<cbc:InvoicedQuantity unitCode=\"H87\">30</cbc:InvoicedQuantity> <!-- BT-130, BT-129 -->\n\t\t<cbc:LineExtensionAmount currencyID=\"SGD\">5700.00</cbc:LineExtensionAmount> <!-- BT-131 -->\n\t\t<cac:AllowanceCharge>\n\t\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator> <!-- qualifier -->\n\t\t\t<cbc:AllowanceChargeReasonCode>100</cbc:AllowanceChargeReasonCode> <!-- BT-140, BT-145 -->\n\t\t\t<cbc:AllowanceChargeReason>Line discount</cbc:AllowanceChargeReason> <!-- BT-139, BT-144 -->\n\t\t\t<cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric> <!-- BT-138, BT-143 -->\n\t\t\t<cbc:Amount currencyID=\"SGD\">300.00</cbc:Amount> <!-- BT-136, BT-141 -->\n\t\t\t<cbc:BaseAmount currencyID=\"SGD\">6000.00</cbc:BaseAmount> <!-- BT-137, BT-142 -->\n\t\t</cac:AllowanceCharge>\t\t\n\t\t<cac:Item>\n\t\t\t<cbc:Name>Camera W35</cbc:Name> <!-- BT-153 -->\n\t\t\t<cac:SellersItemIdentification>\n\t\t\t\t<cbc:ID>Item3</cbc:ID> <!-- BT-155 -->\n\t\t\t</cac:SellersItemIdentification>\n\t\t\t<cac:StandardItemIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0160\">1234567890121</cbc:ID> <!-- BT-157, BT-157-1 -->\n\t\t\t</cac:StandardItemIdentification>\n\t\t\t<cac:OriginCountry>\n\t\t\t\t<cbc:IdentificationCode>CH</cbc:IdentificationCode> <!-- BT-159 -->\n\t\t\t</cac:OriginCountry>\n\t\t\t<cac:CommodityClassification>\n\t\t\t\t<cbc:ItemClassificationCode listID=\"MP\">43211503</cbc:ItemClassificationCode> <!-- BT-158, BT-158-1 -->\n\t\t\t</cac:CommodityClassification>\n\t\t\t<cac:ClassifiedTaxCategory>\n\t\t\t\t<cbc:ID>SR</cbc:ID> <!-- BT-151 -->\n\t\t\t\t<cbc:Percent>9</cbc:Percent> <!-- BT-152 -->\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:ClassifiedTaxCategory>\n\t\t</cac:Item>\n\t\t<cac:Price>\n\t\t\t<cbc:PriceAmount currencyID=\"SGD\">200.00</cbc:PriceAmount> <!-- BT-146 -->\n\t\t\t<cbc:BaseQuantity unitCode=\"H87\">1</cbc:BaseQuantity> <!-- BT-149, BT-150 -->\n\t\t</cac:Price>\n\t</cac:InvoiceLine>\n\t<cac:InvoiceLine>\n\t\t<cbc:ID>4</cbc:ID> <!-- BT-126 -->\n\t\t<cbc:InvoicedQuantity unitCode=\"H87\">40</cbc:InvoicedQuantity> <!-- BT-130, BT-129 -->\n\t\t<cbc:LineExtensionAmount currencyID=\"SGD\">8360.00</cbc:LineExtensionAmount> <!-- BT-131 -->\n\t\t<cac:AllowanceCharge>\n\t\t\t<cbc:ChargeIndicator>false</cbc:ChargeIndicator> <!-- qualifier -->\n\t\t\t<cbc:AllowanceChargeReasonCode>100</cbc:AllowanceChargeReasonCode> <!-- BT-140, BT-145 -->\n\t\t\t<cbc:AllowanceChargeReason>Line discount</cbc:AllowanceChargeReason> <!-- BT-139, BT-144 -->\n\t\t\t<cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric> <!-- BT-138, BT-143 -->\n\t\t\t<cbc:Amount currencyID=\"SGD\">440.00</cbc:Amount> <!-- BT-136, BT-141 -->\n\t\t\t<cbc:BaseAmount currencyID=\"SGD\">8800.00</cbc:BaseAmount> <!-- BT-137, BT-142 -->\n\t\t</cac:AllowanceCharge>\t\t\n\t\t<cac:Item>\n\t\t\t<cbc:Name>Camera Prima 5</cbc:Name> <!-- BT-153 -->\n\t\t\t<cac:SellersItemIdentification>\n\t\t\t\t<cbc:ID>Item4</cbc:ID> <!-- BT-155 -->\n\t\t\t</cac:SellersItemIdentification>\n\t\t\t<cac:StandardItemIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0160\">1234567890121</cbc:ID> <!-- BT-157, BT-157-1 -->\n\t\t\t</cac:StandardItemIdentification>\n\t\t\t<cac:OriginCountry>\n\t\t\t\t<cbc:IdentificationCode>CH</cbc:IdentificationCode> <!-- BT-159 -->\n\t\t\t</cac:OriginCountry>\n\t\t\t<cac:CommodityClassification>\n\t\t\t\t<cbc:ItemClassificationCode listID=\"MP\">43211503</cbc:ItemClassificationCode> <!-- BT-158, BT-158-1 -->\n\t\t\t</cac:CommodityClassification>\n\t\t\t<cac:ClassifiedTaxCategory>\n\t\t\t\t<cbc:ID>SR</cbc:ID> <!-- BT-151 -->\n\t\t\t\t<cbc:Percent>9</cbc:Percent> <!-- BT-152 -->\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:ClassifiedTaxCategory>\n\t\t</cac:Item>\n\t\t<cac:Price>\n\t\t\t<cbc:PriceAmount currencyID=\"SGD\">220.00</cbc:PriceAmount> <!-- BT-146 -->\n\t\t\t<cbc:BaseQuantity unitCode=\"H87\">1</cbc:BaseQuantity> <!-- BT-149, BT-150 -->\n\t\t</cac:Price>\n\t</cac:InvoiceLine>\t\t\n</Invoice>\n</StandardBusinessDocument>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transactions?networkType=PEPPOL",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "networkType",
+									"value": "PEPPOL",
+									"description": "(Required) "
+								},
+								{
+									"key": "transformationId",
+									"value": "",
+									"description": "THIS WILL NOT BE IMPLEMENTED FOR PHASE 1",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Submit a transaction in its native format for further processing by the transaction service, or in case a transformation id is applied in the agreed source format of the transformation.  Upon submission a globally unique transaction id will be generated and returned back in the response. Idempotency: If you need idempotency to be guaranteed you need to set an idempotent key in the header. The key must be unique for your organisation and will auto-expire after  14 days."
+					},
+					"response": [
+						{
+							"name": "The request has been accepted and you can query the service for the status of the outcome using the generated id that was returned.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Idempotency-Key",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<TODO />",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/transactions?networkType=PEPPOL&transformationId=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "networkType",
+											"value": "PEPPOL"
+										},
+										{
+											"key": "transformationId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"urn:uuid:cc27a18b-862f-db51-33b7-02d\"\n}"
+						},
+						{
+							"name": "Invalid input.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Idempotency-Key",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<TODO />",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/transactions?networkType=PEPPOL&transformationId=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "networkType",
+											"value": "PEPPOL"
+										},
+										{
+											"key": "transformationId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "POST MY PINT Invoice v1.0",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Idempotency-Key",
+								"value": "",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/xml"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<StandardBusinessDocument xmlns=\"http://www.unece.org/cefact/namespaces/StandardBusinessDocumentHeader\">\n    <StandardBusinessDocumentHeader>\n        <HeaderVersion>1.0</HeaderVersion>\n        <Sender>\n            <Identifier Authority=\"iso6523-actorid-upis\">0007:API_TEST_SENDER</Identifier>\n        </Sender>\n        <Receiver>\n            <Identifier Authority=\"iso6523-actorid-upis\">0007:API_TEST_RECEIVER</Identifier>\n        </Receiver>\n        <DocumentIdentification>\n            <Standard>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2</Standard>\n            <TypeVersion>2.1</TypeVersion>\n            <InstanceIdentifier>636e7df7-b611-4480-8933-92567a69beca</InstanceIdentifier>\n            <Type>Invoice</Type>\n            <CreationDateAndTime>2024-08-19T08:40:04</CreationDateAndTime>\n        </DocumentIdentification>\n        <BusinessScope> \n            <Scope>\n                <Type>DOCUMENTID</Type>\n                <InstanceIdentifier>urn:oasis:names:specification:ubl:schema:xsd:Invoice-2::Invoice##urn:peppol:pint:billing-1@my-1::2.1</InstanceIdentifier>\n                <Identifier>busdox-docid-qns</Identifier>\n            </Scope>\n            <Scope>\n                <Type>PROCESSID</Type>\n                <InstanceIdentifier>urn:peppol:bis:billing</InstanceIdentifier>\n                <Identifier>cenbii-procid-ubl</Identifier>\n            </Scope>\n            <Scope>\n                <Type>COUNTRY_C1</Type>\n                <InstanceIdentifier>MY</InstanceIdentifier>\n            </Scope>\n        </BusinessScope>\n    </StandardBusinessDocumentHeader>\n    <Invoice xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\"\n  xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\"\n  xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\"\n  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd\">\n\t<cbc:CustomizationID>urn:peppol:pint:billing-1@my-1</cbc:CustomizationID> <!-- IBT-024 - Specification identifier -->\n\t<cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID> <!-- IBT-023 - Business process type -->\n\t<cbc:ID>MY002100258TEST</cbc:ID>\n\t<cbc:IssueDate>2023-11-30</cbc:IssueDate>\n\t<cbc:DueDate>2024-01-30</cbc:DueDate>\n\t<cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>\n\t<cbc:TaxPointDate>2023-11-30</cbc:TaxPointDate> <!-- Move TaxPointDate here -->\t\n\t<cbc:DocumentCurrencyCode>MYR</cbc:DocumentCurrencyCode>\n\t<cbc:AccountingCost>Standard</cbc:AccountingCost>\n\t<cbc:BuyerReference>Cik Maria</cbc:BuyerReference>\t\n\t<cac:InvoicePeriod> <!-- IBG-14 - INVOICING PERIOD -->\n\t\t<cbc:StartDate>2023-11-01</cbc:StartDate>\n\t\t<cbc:EndDate>2023-11-30</cbc:EndDate>\n\t</cac:InvoicePeriod>\n\t<cac:OrderReference>\n\t\t<cbc:ID>PO109831</cbc:ID>\n\t\t<cbc:SalesOrderID>793</cbc:SalesOrderID>\n\t</cac:OrderReference>\n\t<cac:BillingReference>\n\t\t<cac:InvoiceDocumentReference>\n\t\t\t<cbc:ID>53798679</cbc:ID>\n\t\t\t<cbc:IssueDate>2023-11-30</cbc:IssueDate>\n\t\t</cac:InvoiceDocumentReference>\n\t</cac:BillingReference>\n\t<cac:DespatchDocumentReference>\n\t\t<cbc:ID>2100409</cbc:ID>\n\t</cac:DespatchDocumentReference>\t\n\t<cac:ReceiptDocumentReference>\n\t\t<cbc:ID>11</cbc:ID>\n\t</cac:ReceiptDocumentReference>\n\t<cac:OriginatorDocumentReference>\n\t\t<cbc:ID>0965566776</cbc:ID>\n\t</cac:OriginatorDocumentReference>\n\t<cac:ContractDocumentReference>\n\t\t<cbc:ID>11</cbc:ID>\n\t</cac:ContractDocumentReference>\n\n\t<cac:AdditionalDocumentReference>\n\t\t<cbc:ID>Atch56890</cbc:ID>\n\t\t<cbc:DocumentDescription>Link to PDF Attchment</cbc:DocumentDescription>\n\t\t<cac:Attachment>\n\t\t\t<cac:ExternalReference>\n\t\t\t\t<cbc:URI>https://thelink</cbc:URI>\n\t\t\t</cac:ExternalReference>\n\t\t</cac:Attachment>\n\t</cac:AdditionalDocumentReference>\n\t<cac:ProjectReference>\n\t\t<cbc:ID>11</cbc:ID>\n\t</cac:ProjectReference>\t\n\t<cac:AccountingSupplierParty>\n\t\t<cac:Party>\n\t\t\t<cbc:EndpointID schemeID=\"0230\">2023010000001</cbc:EndpointID>     \n\t\t\t<cac:PartyIdentification>\n        \t\t<cbc:ID schemeID=\"0230\">2023010000001</cbc:ID>\n      \t\t</cac:PartyIdentification> \n\t\t\t<cac:PartyName>\n\t\t\t\t<cbc:Name>Monitor ERP Sdn Bhd</cbc:Name>  \n\t\t\t</cac:PartyName>\n\t\t\t<cac:PostalAddress>\n\t\t\t\t<cbc:StreetName>18, Jalan Excellent</cbc:StreetName>\n\t\t\t\t<cbc:AdditionalStreetName>Bandar Sunway</cbc:AdditionalStreetName>\n\t\t\t\t<cbc:CityName>Petaling Jaya</cbc:CityName>\n\t\t\t\t<cbc:PostalZone>52000</cbc:PostalZone>\n\t\t\t\t<cbc:CountrySubentity>Sunway</cbc:CountrySubentity>\n\t\t\t\t<cac:AddressLine>\n\t\t\t\t\t<cbc:Line>No 18</cbc:Line>\n\t\t\t\t</cac:AddressLine>\n\t\t\t\t<cac:Country>\n\t\t\t\t\t<cbc:IdentificationCode>MY</cbc:IdentificationCode>  \n\t\t\t\t</cac:Country>\n\t\t\t</cac:PostalAddress>\n\t\t\t<cac:PartyTaxScheme> \n\t\t\t\t<cbc:CompanyID>TIN20211100090911</cbc:CompanyID> <!-- IBT-032 - Seller tax registration (ibt-032) MUST occur maximum once -->\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>GST</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:PartyTaxScheme>\n\t\t\t<cac:PartyTaxScheme>\n\t\t\t\t<cbc:CompanyID>X88-1907-12345678</cbc:CompanyID> <!-- IBT-031 - An Invoice shall have the Supplier’s STT Registration Number -->\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>VAT</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:PartyTaxScheme>\n\t\t\t<cac:PartyLegalEntity>\n\t\t\t\t<cbc:RegistrationName>Monitor ERP Sdn Bhd</cbc:RegistrationName>  \n\t\t\t\t<cbc:CompanyID>2023010000001</cbc:CompanyID> <!-- IBT-030 - An Invoice shall have the Supplier’s Registration / Identification Number / Passport Number  -->\n\t\t\t\t<cbc:CompanyLegalForm>SENDIRIAN BERHAD</cbc:CompanyLegalForm>\n\t\t\t</cac:PartyLegalEntity>\n\t\t\t<cac:Contact>  \n\t\t\t\t<cbc:Name>Ahmad, Danial</cbc:Name>\n\t\t\t\t<cbc:Telephone>0320334568</cbc:Telephone>\n\t\t\t\t<cbc:ElectronicMail>ahmad.danial@monitor.com.my</cbc:ElectronicMail>\n\t\t\t</cac:Contact>\n\t\t</cac:Party>\n\t</cac:AccountingSupplierParty>\n\n\t<cac:AccountingCustomerParty>\n\t\t<cac:Party>\n\t\t\t<cbc:EndpointID schemeID=\"0230\">20201234567</cbc:EndpointID>\t\t\t\n\t\t\t<cac:PartyIdentification>\n\t\t\t\t<cbc:ID schemeID=\"0230\">20201234567</cbc:ID>\t\t\t\n\t\t\t</cac:PartyIdentification>\n\t\t\t<cac:PartyName>\n\t\t\t\t<cbc:Name>Amazing HQ</cbc:Name> \n\t\t\t</cac:PartyName>\n\t\t\t<cac:PostalAddress>\n\t\t\t\t<cbc:StreetName>Menara Amazing</cbc:StreetName>\n\t\t\t\t<cbc:AdditionalStreetName>Jalan Jalan</cbc:AdditionalStreetName>\n\t\t\t\t<cbc:CityName>Petaling Jaya</cbc:CityName>\n\t\t\t\t<cbc:PostalZone>47500</cbc:PostalZone>\n\t\t\t\t<cac:AddressLine>\n\t\t\t\t\t<cbc:Line>20</cbc:Line>\n\t\t\t\t</cac:AddressLine>\n\t\t\t\t<cac:Country>\n\t\t\t\t\t<cbc:IdentificationCode>MY</cbc:IdentificationCode> \n\t\t\t\t</cac:Country>\n\t\t\t</cac:PostalAddress>\n\t\t\t<cac:PartyTaxScheme> <!-- IBT-048 - Buyer tax registration MUST occur maximum once.  -->\n\t\t\t\t<cbc:CompanyID>X81-0708-12345678</cbc:CompanyID>\t\t\t\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>VAT</cbc:ID> \n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:PartyTaxScheme>\n\t\t\t<cac:PartyLegalEntity>\n\t\t\t\t<cbc:RegistrationName>Amazing HQ</cbc:RegistrationName> \n\t\t\t\t<cbc:CompanyID>20201234567</cbc:CompanyID> <!-- IBT-047 - An Invoice shall have the Buyer's Registration / Identification Number / Passport Number  -->\n\t\t\t</cac:PartyLegalEntity>\n\t\t\t<cac:Contact> \n\t\t\t\t<cbc:Name>Danny Khoo</cbc:Name>\n\t\t\t\t<cbc:Telephone>0175622845</cbc:Telephone>\n\t\t\t\t<cbc:ElectronicMail>Danny.khoo@amazing.com.my</cbc:ElectronicMail>\n\t\t\t</cac:Contact>\n\t\t</cac:Party>\n\t</cac:AccountingCustomerParty>\n\n\t<cac:PayeeParty>\n\t\t<cac:PartyIdentification>\n\t\t\t<cbc:ID schemeID=\"0230\">6715595</cbc:ID>\n\t\t</cac:PartyIdentification>\n\t\t<cac:PartyName>\n\t\t\t<cbc:Name>Amazing HQ</cbc:Name>\n\t\t</cac:PartyName>\n\t\t<cac:PartyLegalEntity>\n\t\t\t<cbc:CompanyID>6715595</cbc:CompanyID>\n\t\t</cac:PartyLegalEntity>\n\t</cac:PayeeParty>\n\n\t<cac:TaxRepresentativeParty>\n\t\t<cac:PartyName>\n\t\t\t<cbc:Name>TTMY Audit</cbc:Name>\n\t\t</cac:PartyName>\n\t\t<cac:PostalAddress>\n\t\t\t<cbc:StreetName>Unit4.02, Menara Maybank</cbc:StreetName>\n\t\t\t<cbc:AdditionalStreetName>Jalan Plumbum 8</cbc:AdditionalStreetName>\n\t\t\t<cbc:CityName>Shah Alam</cbc:CityName>\n\t\t\t<cbc:PostalZone>47110</cbc:PostalZone>\n\t\t\t<cbc:CountrySubentity>Subentity</cbc:CountrySubentity>\n\t\t\t<cac:AddressLine>\n\t\t\t\t<cbc:Line>Kepayan</cbc:Line>\n\t\t\t</cac:AddressLine>\n\t\t\t<cac:Country>\n\t\t\t\t<cbc:IdentificationCode>MY</cbc:IdentificationCode>\n\t\t\t</cac:Country>\n\t\t</cac:PostalAddress>\n\t\t<cac:PartyTaxScheme>\n\t\t\t<cbc:CompanyID>MY200824324535</cbc:CompanyID>\n\t\t\t\n\t\t\t<cac:TaxScheme>\n\t\t\t\t<cbc:ID>VAT</cbc:ID>\n\t\t\t</cac:TaxScheme>\n\t\t</cac:PartyTaxScheme>\n\t</cac:TaxRepresentativeParty>\n\n\t<cac:Delivery>\n\t\t<cbc:ActualDeliveryDate>2023-11-30</cbc:ActualDeliveryDate>\n\t\t<cac:DeliveryLocation>\n\t\t\t<cbc:ID schemeID=\"0230\">7300010000001</cbc:ID>\n\t\t\t<cac:Address> \n\t\t\t\t<cbc:StreetName>Jalan Amazing 88</cbc:StreetName>\n\t\t\t\t<cbc:AdditionalStreetName>Pandamaran</cbc:AdditionalStreetName>\n\t\t\t\t<cbc:CityName>Klang</cbc:CityName>\n\t\t\t\t<cbc:PostalZone>41200</cbc:PostalZone>\n\t\t\t\t<cac:AddressLine>\n\t\t\t\t\t<cbc:Line>Amazing Sdn Bhd</cbc:Line>\n\t\t\t\t</cac:AddressLine>\n\t\t\t\t<cac:Country>\n\t\t\t\t\t<cbc:IdentificationCode>MY</cbc:IdentificationCode> \n\t\t\t\t</cac:Country>\n\t\t\t</cac:Address>\n\t\t</cac:DeliveryLocation>\n\t\t<cac:DeliveryParty> \n\t\t\t<cac:PartyName>\n\t\t\t\t<cbc:Name>Monitor ERP</cbc:Name>\n\t\t\t</cac:PartyName>\n\t\t</cac:DeliveryParty>\n\t</cac:Delivery>\n\n\t<cac:PaymentMeans>\n\t\t<cbc:PaymentMeansCode name=\"Credit transfer\">30</cbc:PaymentMeansCode>\n\t\t<cbc:PaymentID>93274234</cbc:PaymentID>\n\t\t<cac:PayeeFinancialAccount>\n\t\t\t<cbc:ID>514019459999</cbc:ID>\n\t\t\t<cbc:Name>Ahmad Danial</cbc:Name>\n\t\t\t<cac:FinancialInstitutionBranch>\n\t\t\t\t<cbc:ID>BIC32409</cbc:ID>\n\t\t\t</cac:FinancialInstitutionBranch>\n\t\t</cac:PayeeFinancialAccount>\n\t</cac:PaymentMeans>\n\t<cac:PaymentTerms>\n\t\t<cbc:Note>60 DAYS</cbc:Note>\n\t</cac:PaymentTerms>\n\n\t<cac:AllowanceCharge>\n\t\t<cbc:ChargeIndicator>true</cbc:ChargeIndicator> \n\t\t<cbc:AllowanceChargeReasonCode>FC</cbc:AllowanceChargeReasonCode>\n\t\t<cbc:AllowanceChargeReason>Delivery service</cbc:AllowanceChargeReason>\n\t\t<cbc:MultiplierFactorNumeric>0</cbc:MultiplierFactorNumeric>\n\t\t<cbc:Amount currencyID=\"MYR\">0</cbc:Amount> \n\t\t<cbc:BaseAmount currencyID=\"MYR\">0</cbc:BaseAmount> \n\t\t<cac:TaxCategory>\n\t\t\t<cbc:ID>T</cbc:ID>\n\t\t\t<cbc:Percent>10</cbc:Percent>\n\t\t\t<cac:TaxScheme>\n\t\t\t\t<cbc:ID>VAT</cbc:ID>\n\t\t\t</cac:TaxScheme>\n\t\t</cac:TaxCategory>\n\t</cac:AllowanceCharge>\n\n\t<cac:TaxTotal>\n\t\t<cbc:TaxAmount currencyID=\"MYR\">1100.00</cbc:TaxAmount>\n\t\t<cac:TaxSubtotal>\n\t\t\t<cbc:TaxableAmount currencyID=\"MYR\">11000.00</cbc:TaxableAmount>\n\t\t\t<cbc:TaxAmount currencyID=\"MYR\">1100.00</cbc:TaxAmount>\n\t\t\t<cac:TaxCategory>\n\t\t\t\t<cbc:ID>T</cbc:ID>\n\t\t\t\t<cbc:Percent>10</cbc:Percent>\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>VAT</cbc:ID>\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:TaxCategory>\n\t\t</cac:TaxSubtotal>\n\t</cac:TaxTotal>\n\n\n\t<cac:LegalMonetaryTotal>\n\t\t<cbc:LineExtensionAmount currencyID=\"MYR\">11000.00</cbc:LineExtensionAmount>\n\t\t<cbc:TaxExclusiveAmount currencyID=\"MYR\">11000.00</cbc:TaxExclusiveAmount>\n\t\t<cbc:TaxInclusiveAmount currencyID=\"MYR\">12100.00</cbc:TaxInclusiveAmount>\n\t\t<cbc:AllowanceTotalAmount currencyID=\"MYR\">0</cbc:AllowanceTotalAmount>\t\t\n\t\t<cbc:ChargeTotalAmount currencyID=\"MYR\">0</cbc:ChargeTotalAmount>\n\t\t<cbc:PrepaidAmount currencyID=\"MYR\">0.00</cbc:PrepaidAmount>\n\t\t<cbc:PayableRoundingAmount currencyID=\"MYR\">0.00</cbc:PayableRoundingAmount>\n\t\t<cbc:PayableAmount  currencyID=\"MYR\">12100.00</cbc:PayableAmount> \n\t</cac:LegalMonetaryTotal>\n\n\t<cac:InvoiceLine>\n\t\t<cbc:ID>1</cbc:ID>\n\t\t<cbc:Note>Please send to gate 5</cbc:Note>\n\t\t<cbc:InvoicedQuantity unitCode=\"EA\">100</cbc:InvoicedQuantity> <!-- [ibr-023]-An Invoice line (ibg-25) MUST have an Invoiced quantity unit of measure code (ibt-130). -->\n\t\t<cbc:LineExtensionAmount currencyID=\"MYR\">5000.00</cbc:LineExtensionAmount>\n\t\t<cbc:AccountingCost>Marvel</cbc:AccountingCost>\n\t\t<cac:OrderLineReference>\n\t\t\t<cbc:LineID>10</cbc:LineID>\n\t\t</cac:OrderLineReference>\n        <cac:DocumentReference>\n            <cbc:ID>Mobile number 1223432432</cbc:ID>\n            <cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>\n        </cac:DocumentReference>\n        <cac:Item>\n            <cbc:Name>Marvel Chair AB18 Blue</cbc:Name> <!-- IBT-153 - Item name -->\n\t\t\t<cac:ClassifiedTaxCategory> <!-- IBG-30 - LINE TAX INFORMATION -->\n\t\t\t\t<cbc:ID>T</cbc:ID> <!-- IBT-151 - Invoiced item TAX category code -->\n\t\t\t\t<cbc:Percent>10</cbc:Percent> <!-- IBT-152 - Invoiced item TAX rate -->\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>VAT</cbc:ID> <!-- IBT-167 - Tax Scheme -->\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:ClassifiedTaxCategory>               \n        </cac:Item>\n\t\t<cac:Price>\n\t\t\t<cbc:PriceAmount currencyID=\"MYR\">50.00</cbc:PriceAmount>\n\t\t\t<cbc:BaseQuantity unitCode=\"EA\">1</cbc:BaseQuantity>\n\t\t</cac:Price>\n\t</cac:InvoiceLine>\n\n\n\t<cac:InvoiceLine>\n\t\t<cbc:ID>2</cbc:ID>\n\t\t<cbc:Note>Please send to Gate 6</cbc:Note>\n        <cbc:InvoicedQuantity unitCode=\"EA\">100</cbc:InvoicedQuantity> <!-- [ibr-023]-An Invoice line (ibg-25) MUST have an Invoiced quantity unit of measure code (ibt-130). -->\n\t\t<cbc:LineExtensionAmount currencyID=\"MYR\">6000.00</cbc:LineExtensionAmount>\n\t\t<cbc:AccountingCost>Marvel</cbc:AccountingCost>\n\t\t<cac:OrderLineReference>\n\t\t\t<cbc:LineID>20</cbc:LineID>\n\t\t</cac:OrderLineReference>\n        <cac:DocumentReference>\n            <cbc:ID>Mobile number 1223432432</cbc:ID>\n            <cbc:DocumentTypeCode>130</cbc:DocumentTypeCode>\n        </cac:DocumentReference>\n        <cac:Item>\n            <cbc:Name>Marvel Chair AB20 Red</cbc:Name> <!-- IBT-153 - Item name -->\n\t\t\t<cac:ClassifiedTaxCategory> <!-- IBG-30 - LINE TAX INFORMATION -->\n\t\t\t\t<cbc:ID>T</cbc:ID> <!-- IBT-151 - Invoiced item TAX category code -->\n\t\t\t\t<cbc:Percent>10</cbc:Percent> <!-- IBT-152 - Invoiced item TAX rate -->\n\t\t\t\t<cac:TaxScheme>\n\t\t\t\t\t<cbc:ID>VAT</cbc:ID> <!-- IBT-167 - Tax Scheme -->\n\t\t\t\t</cac:TaxScheme>\n\t\t\t</cac:ClassifiedTaxCategory>   \n        </cac:Item>\n\t\t<cac:Price>\n\t\t\t<cbc:PriceAmount currencyID=\"MYR\">60.00</cbc:PriceAmount>\n\t\t\t<cbc:BaseQuantity unitCode=\"EA\">1</cbc:BaseQuantity>\n\t\t</cac:Price>\n\t</cac:InvoiceLine>\n</Invoice>\n</StandardBusinessDocument>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transactions?networkType=PEPPOL",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "networkType",
+									"value": "PEPPOL",
+									"description": "(Required) "
+								},
+								{
+									"key": "transformationId",
+									"value": "",
+									"description": "THIS WILL NOT BE IMPLEMENTED FOR PHASE 1",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Submit a transaction in its native format for further processing by the transaction service, or in case a transformation id is applied in the agreed source format of the transformation.  Upon submission a globally unique transaction id will be generated and returned back in the response. Idempotency: If you need idempotency to be guaranteed you need to set an idempotent key in the header. The key must be unique for your organisation and will auto-expire after  14 days."
+					},
+					"response": [
+						{
+							"name": "The request has been accepted and you can query the service for the status of the outcome using the generated id that was returned.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Idempotency-Key",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<TODO />",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/transactions?networkType=PEPPOL&transformationId=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "networkType",
+											"value": "PEPPOL"
+										},
+										{
+											"key": "transformationId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"transactionId\": \"urn:uuid:cc27a18b-862f-db51-33b7-02d\"\n}"
+						},
+						{
+							"name": "Invalid input.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Idempotency-Key",
+										"value": "<string>"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<TODO />",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/transactions?networkType=PEPPOL&transformationId=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"transactions"
+									],
+									"query": [
+										{
+											"key": "networkType",
+											"value": "PEPPOL"
+										},
+										{
+											"key": "transformationId",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "change password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://auth.test.galaxygw.com/password?currentPassword=<<your_current_password>>&newPassword=<<your_new_password>>",
+							"protocol": "https",
+							"host": [
+								"auth",
+								"test",
+								"galaxygw",
+								"com"
+							],
+							"path": [
+								"password"
+							],
+							"query": [
+								{
+									"key": "currentPassword",
+									"value": "<<your_current_password>>"
+								},
+								{
+									"key": "newPassword",
+									"value": "<<your_new_password>>"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "clientId",
+				"value": "<<insert_username>>",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "<<insert_secret/password>>",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "https://auth.test.galaxygw.com/oauth2/token",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "client_credentials",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://api.test.galaxygw.com/transaction-api/1.0",
+			"type": "string"
+		}
+	]
+}
